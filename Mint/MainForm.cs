@@ -407,5 +407,11 @@ namespace Mint
                 DeleteAllAppItems();
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            AboutForm f = new AboutForm();
+            f.ShowDialog(this);
+        }
     }
 }
