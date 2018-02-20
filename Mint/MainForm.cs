@@ -369,7 +369,7 @@ namespace Mint
         {
             OpenFileDialog dialog = new OpenFileDialog();
 
-            dialog.Title = "App Launcher | Select an application...";
+            dialog.Title = "Mint | Select an application...";
             dialog.Filter = "Applications | *.exe";
 
             if (dialog.ShowDialog() == DialogResult.OK)

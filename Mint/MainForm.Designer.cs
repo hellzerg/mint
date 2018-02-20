@@ -473,7 +473,7 @@
             // 
             this.launcherIcon.ContextMenuStrip = this.launcherMenu;
             this.launcherIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("launcherIcon.Icon")));
-            this.launcherIcon.Text = "App Launcher";
+            this.launcherIcon.Text = "Mint";
             this.launcherIcon.Visible = true;
             this.launcherIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.launcherIcon_MouseDoubleClick);
             // 
