@@ -269,6 +269,24 @@ namespace Mint
             }
         }
 
+        private void LaunchApp(string app)
+        {
+            try
+            {
+                string fileName = _appsStructure.Apps.Find(x => x.AppTitle == app).AppLink;
+                string filePath = Path.GetDirectoryName(fileName);
+                
+                Process p = new Process();
+                p.StartInfo.WorkingDirectory = filePath;
+                p.StartInfo.FileName = fileName;
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void checkAutoStart_CheckedChanged(object sender, EventArgs e)
         {
             Options.CurrentOptions.AutoStart = checkAutoStart.Checked;
@@ -339,15 +357,7 @@ namespace Mint
             else
             {
                 _allowExit = false;
-
-                try
-                {
-                    Process.Start(_appsStructure.Apps.Find(x => x.AppTitle == e.ClickedItem.Text).AppLink);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                LaunchApp(e.ClickedItem.Text);
             }
         }
 
