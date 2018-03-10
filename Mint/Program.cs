@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace Mint
 
         // Enter current version here
         internal readonly static float Major = 1;
-        internal readonly static float Minor = 1;
+        internal readonly static float Minor = 2;
 
         /* END OF VERSION PROPERTIES */
 
@@ -29,17 +30,31 @@ namespace Mint
 
         const string _jsonAssembly = @"Mint.Newtonsoft.Json.dll";
 
+        const string _mutexGuid = "{DEADMOON-0EFC7B9A-D7FC-437F-B4B3-0118C643FE19-MINT}";
+        static bool _notRunning;
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            EmbeddedAssembly.Load(_jsonAssembly, _jsonAssembly.Replace("Mint.", string.Empty));
-            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            using (Mutex m = new Mutex(true, _mutexGuid, out _notRunning))
+            {
+                if (_notRunning)
+                {
+                    EmbeddedAssembly.Load(_jsonAssembly, _jsonAssembly.Replace("Mint.", string.Empty));
+                    AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
-            Options.LoadSettings();
-            Application.Run(new MainForm());
+                    Options.LoadSettings();
+                    Application.Run(new MainForm());
+                }
+                else
+                {
+                    MessageBox.Show("Mint is already running in the background!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit();
+                }
+            } 
         }
 
         private static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)

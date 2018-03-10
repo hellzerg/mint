@@ -21,6 +21,6 @@ Compatible with Windows 7, 8.1, 10
 
 ## Details: ##
 
-Latest version: 1.1
+Latest version: 1.2
 
-Released: February 27, 2018
+Released: March 10, 2018

@@ -16,6 +16,8 @@ namespace Mint
 {
     public partial class MainForm : Form
     {
+        internal AppsStructure AppsStructure;
+
         readonly string _latestVersionLink = "https://raw.githubusercontent.com/hellzerg/mint/master/version.txt";
         readonly string _releasesLink = "https://github.com/hellzerg/mint/releases";
 
@@ -24,8 +26,6 @@ namespace Mint
 
         readonly string _deleteAppMessage = "Are you sure you want to delete the following app?\n\n";
         readonly string _deleteAllAppsMessage = "Are you sure you want to delete all apps?";
-
-        AppsStructure _appsStructure;
 
         bool _allowExit = false;
 
@@ -53,12 +53,12 @@ namespace Mint
         {
             if (File.Exists(Options.AppsStructureFile))
             {
-                _appsStructure = JsonConvert.DeserializeObject<AppsStructure>(File.ReadAllText(Options.AppsStructureFile));
+                AppsStructure = JsonConvert.DeserializeObject<AppsStructure>(File.ReadAllText(Options.AppsStructureFile));
             }
             else
             {
-                _appsStructure = new AppsStructure();
-                _appsStructure.Apps = new List<App>();
+                AppsStructure = new AppsStructure();
+                AppsStructure.Apps = new List<App>();
 
                 using (FileStream fs = File.Open(Options.AppsStructureFile, FileMode.CreateNew))
                 using (StreamWriter sw = new StreamWriter(fs))
@@ -67,7 +67,7 @@ namespace Mint
                     jw.Formatting = Formatting.Indented;
 
                     JsonSerializer serializer = new JsonSerializer();
-                    serializer.Serialize(jw, _appsStructure);
+                    serializer.Serialize(jw, AppsStructure);
                 }
             }
         }
@@ -83,7 +83,7 @@ namespace Mint
                 jw.Formatting = Formatting.Indented;
 
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(jw, _appsStructure);
+                serializer.Serialize(jw, AppsStructure);
             }
         }
 
@@ -91,11 +91,11 @@ namespace Mint
         {
             listApps.Items.Clear();
 
-            if (_appsStructure != null)
+            if (AppsStructure != null)
             {
-                if (_appsStructure.Apps != null)
+                if (AppsStructure.Apps != null)
                 {
-                    foreach (App x in _appsStructure.Apps)
+                    foreach (App x in AppsStructure.Apps)
                     {
                         listApps.Items.Add(x.AppTitle);
                     }
@@ -134,9 +134,9 @@ namespace Mint
         {
             launcherMenu.Items.Clear();
 
-            if (_appsStructure.Apps != null)
+            if (AppsStructure.Apps != null)
             {
-                foreach (App x in _appsStructure.Apps)
+                foreach (App x in AppsStructure.Apps)
                 {
                     launcherMenu.Items.Add(x.AppTitle);
                 }
@@ -156,13 +156,13 @@ namespace Mint
             {
                 if (File.Exists(txtAppLink.Text))
                 {
-                    if (_appsStructure.Apps.Find(x => x.AppLink == txtAppLink.Text) != null)
+                    if (AppsStructure.Apps.Find(x => x.AppLink == txtAppLink.Text) != null)
                     {
                         MessageBox.Show("Specified app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
-                    if (_appsStructure.Apps.Find(x => x.AppTitle == txtAppTitle.Text) != null)
+                    if (AppsStructure.Apps.Find(x => x.AppTitle == txtAppTitle.Text) != null)
                     {
                         MessageBox.Show("Specified app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
@@ -172,7 +172,7 @@ namespace Mint
                     app.AppLink = txtAppLink.Text;
                     app.AppTitle = txtAppTitle.Text;
 
-                    _appsStructure.Apps.Add(app);
+                    AppsStructure.Apps.Add(app);
                     SaveAppsStructure();
 
                     LoadAppsStructure();
@@ -244,7 +244,7 @@ namespace Mint
             if (MessageBox.Show(_deleteAppMessage + app, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 listApps.Items.RemoveAt(appIndex);
-                _appsStructure.Apps.RemoveAt(appIndex);
+                AppsStructure.Apps.RemoveAt(appIndex);
 
                 SaveAppsStructure();
                 LoadAppsStructure();
@@ -259,7 +259,7 @@ namespace Mint
             if (MessageBox.Show(_deleteAllAppsMessage, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 listApps.Items.Clear();
-                _appsStructure.Apps.Clear();
+                AppsStructure.Apps.Clear();
 
                 SaveAppsStructure();
                 LoadAppsStructure();
@@ -273,7 +273,7 @@ namespace Mint
         {
             try
             {
-                string fileName = _appsStructure.Apps.Find(x => x.AppTitle == app).AppLink;
+                string fileName = AppsStructure.Apps.Find(x => x.AppTitle == app).AppLink;
                 string filePath = Path.GetDirectoryName(fileName);
                 
                 Process p = new Process();
@@ -422,6 +422,20 @@ namespace Mint
         {
             AboutForm f = new AboutForm();
             f.ShowDialog(this);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (listApps.SelectedIndex > -1)
+            {
+                ModifyForm f = new ModifyForm(listApps.SelectedIndex, this);
+                f.ShowDialog();
+
+                SaveAppsStructure();
+                LoadAppsStructure();
+                LoadAppsList();
+                BuildLauncherMenu();
+            }
         }
     }
 }

@@ -46,6 +46,7 @@
             this.radioZerg = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.panelApps = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listApps = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -276,6 +277,7 @@
             // panelApps
             // 
             this.panelApps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelApps.Controls.Add(this.btnEdit);
             this.panelApps.Controls.Add(this.panel2);
             this.panelApps.Controls.Add(this.label3);
             this.panelApps.Controls.Add(this.btnDelete);
@@ -284,6 +286,24 @@
             this.panelApps.Name = "panelApps";
             this.panelApps.Size = new System.Drawing.Size(370, 555);
             this.panelApps.TabIndex = 90;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(163, 501);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(89, 39);
+            this.btnEdit.TabIndex = 84;
+            this.btnEdit.Tag = "themeable";
+            this.btnEdit.Text = "Modify";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // panel2
             // 
@@ -329,10 +349,10 @@
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(258, 501);
+            this.btnDelete.Location = new System.Drawing.Point(256, 501);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 39);
+            this.btnDelete.Size = new System.Drawing.Size(89, 39);
             this.btnDelete.TabIndex = 81;
             this.btnDelete.Tag = "themeable";
             this.btnDelete.Text = "Delete";
@@ -350,7 +370,7 @@
             this.btnClear.Location = new System.Drawing.Point(20, 501);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(87, 39);
+            this.btnClear.Size = new System.Drawing.Size(89, 39);
             this.btnClear.TabIndex = 79;
             this.btnClear.Tag = "themeable";
             this.btnClear.Text = "Clear";
@@ -480,7 +500,7 @@
             // launcherMenu
             // 
             this.launcherMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.launcherMenu.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.launcherMenu.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.launcherMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.launcherMenu.Name = "launcherMenu";
             this.launcherMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -555,6 +575,7 @@
         private System.Windows.Forms.RadioButton radioZerg;
         private System.Windows.Forms.CheckBox checkAutoStart;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 
