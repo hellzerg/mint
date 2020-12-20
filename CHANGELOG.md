@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Added: Optional parameters
 - Added: App icons
 - Added: You can now auto-update the app
+- Added: Sort list alphabetically
 
 ## [1.2] - 2018-03-10
 - Added: Modify an app entry
