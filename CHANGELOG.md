@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [1.3] - 2020-12-20
+- Added: Support for shortcuts
+- Added: Optional parameters
+- Added: App icons
+- Added: You can now auto-update the app
+
 ## [1.2] - 2018-03-10
 - Added: Modify an app entry
 - Added: Check if another instance is running

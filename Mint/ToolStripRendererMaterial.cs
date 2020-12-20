@@ -18,6 +18,28 @@ namespace Mint
 
     internal class ColorsMaterial : ProfessionalColorTable
     {
+        public override Color ImageMarginGradientBegin
+        {
+            get
+            {
+                return Options.BackgroundColor;
+            }
+        }
+        public override Color ImageMarginGradientMiddle
+        {
+            get
+            {
+                return Options.BackgroundColor;
+            }
+        }
+        public override Color ImageMarginGradientEnd
+        {
+            get
+            {
+                return Options.BackgroundColor;
+            }
+        }
+
         public override Color ToolStripBorder
         {
             get

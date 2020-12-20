@@ -11,6 +11,8 @@ using System.IO;
 using System.Net;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using IWshRuntimeLibrary;
+using System.Reflection;
 
 namespace Mint
 {
@@ -19,7 +21,6 @@ namespace Mint
         internal AppsStructure AppsStructure;
 
         readonly string _latestVersionLink = "https://raw.githubusercontent.com/hellzerg/mint/master/version.txt";
-        readonly string _releasesLink = "https://github.com/hellzerg/mint/releases";
 
         readonly string _noNewVersionMessage = "You already have the latest version!";
         readonly string _betaVersionMessage = "You are using an experimental version!";
@@ -33,6 +34,8 @@ namespace Mint
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             Options.ApplyTheme(this);
             launcherMenu.Renderer = new ToolStripRendererMaterial();
@@ -51,16 +54,16 @@ namespace Mint
 
         private void LoadAppsStructure()
         {
-            if (File.Exists(Options.AppsStructureFile))
+            if (System.IO.File.Exists(Options.AppsStructureFile))
             {
-                AppsStructure = JsonConvert.DeserializeObject<AppsStructure>(File.ReadAllText(Options.AppsStructureFile));
+                AppsStructure = JsonConvert.DeserializeObject<AppsStructure>(System.IO.File.ReadAllText(Options.AppsStructureFile));
             }
             else
             {
                 AppsStructure = new AppsStructure();
                 AppsStructure.Apps = new List<App>();
 
-                using (FileStream fs = File.Open(Options.AppsStructureFile, FileMode.CreateNew))
+                using (FileStream fs = System.IO.File.Open(Options.AppsStructureFile, FileMode.CreateNew))
                 using (StreamWriter sw = new StreamWriter(fs))
                 using (JsonWriter jw = new JsonTextWriter(sw))
                 {
@@ -74,9 +77,9 @@ namespace Mint
 
         private void SaveAppsStructure()
         {
-            File.WriteAllText(Options.AppsStructureFile, string.Empty);
+            System.IO.File.WriteAllText(Options.AppsStructureFile, string.Empty);
 
-            using (FileStream fs = File.Open(Options.AppsStructureFile, FileMode.OpenOrCreate))
+            using (FileStream fs = System.IO.File.Open(Options.AppsStructureFile, FileMode.OpenOrCreate))
             using (StreamWriter sw = new StreamWriter(fs))
             using (JsonWriter jw = new JsonTextWriter(sw))
             {
@@ -101,6 +104,8 @@ namespace Mint
                     }
                 }
             }
+
+            label3.Text = string.Format("Apps ({0})", AppsStructure.Apps.Count);
         }
 
         private void LoadOptions()
@@ -138,13 +143,15 @@ namespace Mint
             {
                 foreach (App x in AppsStructure.Apps)
                 {
-                    launcherMenu.Items.Add(x.AppTitle);
+                    
+                    ToolStripMenuItem i = new ToolStripMenuItem(x.AppTitle, (Icon.ExtractAssociatedIcon(x.AppLink)).ToBitmap());
+                    launcherMenu.Items.Add(i);
                 }
             }
 
             launcherMenu.Items.Add("Exit");
 
-            foreach (ToolStripItem y in launcherMenu.Items)
+            foreach (ToolStripMenuItem y in launcherMenu.Items)
             {
                 y.ForeColor = Color.White;
             }
@@ -154,7 +161,7 @@ namespace Mint
         {
             if (!string.IsNullOrEmpty(txtAppLink.Text) && !string.IsNullOrEmpty(txtAppTitle.Text))
             {
-                if (File.Exists(txtAppLink.Text))
+                if (System.IO.File.Exists(txtAppLink.Text))
                 {
                     if (AppsStructure.Apps.Find(x => x.AppLink == txtAppLink.Text) != null)
                     {
@@ -171,6 +178,7 @@ namespace Mint
                     App app = new App();
                     app.AppLink = txtAppLink.Text;
                     app.AppTitle = txtAppTitle.Text;
+                    app.AppParams = txtParams.Text;
 
                     AppsStructure.Apps.Add(app);
                     SaveAppsStructure();
@@ -181,6 +189,7 @@ namespace Mint
 
                     txtAppLink.Clear();
                     txtAppTitle.Clear();
+                    txtParams.Clear();
                 }
                 else
                 {
@@ -193,9 +202,14 @@ namespace Mint
             }
         }
 
-        private string NewVersionMessage(string latest)
+        private string NewVersionMessage(string latestVersion)
         {
-            return string.Format("There is a new version available!\n\nLatest version: {0}\nCurrent version: {1}\n\nDo you want to download it now?", latest, Program.GetCurrentVersionToString());
+            return string.Format("There is a new version available!\n\nLatest version: {0}\nCurrent version: {1}\n\nDo you want to download it now?", latestVersion, Program.GetCurrentVersionToString());
+        }
+
+        private string NewDownloadLink(string latestVersion)
+        {
+            return string.Format("https://github.com/hellzerg/mint/releases/download/{0}/Mint-{0}.exe", latestVersion);
         }
 
         private void CheckForUpdate()
@@ -221,11 +235,48 @@ namespace Mint
                 {
                     if (MessageBox.Show(NewVersionMessage(latestVersion), "Update available", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        // PATCHING PROCESS
                         try
                         {
-                            Process.Start(_releasesLink);
+                            Assembly currentAssembly = Assembly.GetEntryAssembly();
+
+                            if (currentAssembly == null)
+                            {
+                                currentAssembly = Assembly.GetCallingAssembly();
+                            }
+
+                            string appFolder = Path.GetDirectoryName(currentAssembly.Location);
+                            string appName = Path.GetFileNameWithoutExtension(currentAssembly.Location);
+                            string appExtension = Path.GetExtension(currentAssembly.Location);
+
+                            string archiveFile = Path.Combine(appFolder, appName + "_old" + appExtension);
+                            string appFile = Path.Combine(appFolder, appName + appExtension);
+                            string tempFile = Path.Combine(appFolder, appName + "_tmp" + appExtension);
+
+                            // DOWNLOAD NEW VERSION
+                            client.DownloadFile(NewDownloadLink(latestVersion), tempFile);
+
+                            // ALLOW MINT TO EXIT
+                            _allowExit = true;
+
+                            // DELETE PREVIOUS BACK-UP
+                            if (System.IO.File.Exists(archiveFile))
+                            {
+                                System.IO.File.Delete(archiveFile);
+                            }
+
+                            // MAKE BACK-UP
+                            System.IO.File.Move(appFile, archiveFile);
+
+                            // PATCH
+                            System.IO.File.Move(tempFile, appFile);
+
+                            Application.Restart();
                         }
-                        catch { }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
                 else if (float.Parse(latestVersion) == Program.GetCurrentVersion())
@@ -273,12 +324,12 @@ namespace Mint
         {
             try
             {
-                string fileName = AppsStructure.Apps.Find(x => x.AppTitle == app).AppLink;
-                string filePath = Path.GetDirectoryName(fileName);
+                App appX = AppsStructure.Apps.Find(x => x.AppTitle == app);
                 
                 Process p = new Process();
-                p.StartInfo.WorkingDirectory = filePath;
-                p.StartInfo.FileName = fileName;
+                p.StartInfo.WorkingDirectory = Path.GetDirectoryName(appX.AppLink);
+                p.StartInfo.Arguments = appX.AppParams;
+                p.StartInfo.FileName = appX.AppLink;
                 p.Start();
             }
             catch (Exception ex)
@@ -380,12 +431,24 @@ namespace Mint
             OpenFileDialog dialog = new OpenFileDialog();
 
             dialog.Title = "Mint | Select an application...";
-            dialog.Filter = "Applications | *.exe";
+            dialog.Filter = "Applications | *.exe; *.lnk";
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                txtAppLink.Text = dialog.FileName;
-                if (string.IsNullOrEmpty(txtAppTitle.Text)) txtAppTitle.Text = dialog.SafeFileName.Replace(".exe", string.Empty);
+                if (dialog.FileName.EndsWith(".lnk"))
+                {
+                    WshShell shell = new WshShell(); 
+                    IWshShortcut link = (IWshShortcut)shell.CreateShortcut(dialog.FileName);
+
+                    txtAppLink.Text = link.TargetPath;
+                    txtAppTitle.Text = Path.GetFileNameWithoutExtension(dialog.FileName).Replace(".exe", string.Empty);
+                    txtParams.Text = link.Arguments;
+                }
+                else
+                {
+                    txtAppLink.Text = dialog.FileName;
+                    if (string.IsNullOrEmpty(txtAppTitle.Text)) txtAppTitle.Text = dialog.SafeFileName.Replace(".exe", string.Empty);
+                }
             }
         }
 
@@ -436,6 +499,17 @@ namespace Mint
                 LoadAppsList();
                 BuildLauncherMenu();
             }
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            AppsStructure.Apps = AppsStructure.Apps.OrderBy(x => x.AppTitle).ToList();
+
+            SaveAppsStructure();
+
+            LoadAppsStructure();
+            LoadAppsList();
+            BuildLauncherMenu();
         }
     }
 }

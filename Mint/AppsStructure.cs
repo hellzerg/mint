@@ -24,5 +24,6 @@ namespace Mint
     {
         public string AppTitle { get; set; }
         public string AppLink { get; set; }
+        public string AppParams { get; set; }
     }
 }

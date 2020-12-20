@@ -47,8 +47,8 @@ namespace Mint
             string s9 = "deadmoon © ";
             string s10 = "deadmoon © 2";
             string s11 = "deadmoon © 20";
-            string s12 = "deadmoon © 201";
-            string s13 = "deadmoon © 2018";
+            string s12 = "deadmoon © 202";
+            string s13 = "deadmoon © 2021";
 
             switch (l2.Text)
             {
@@ -88,12 +88,12 @@ namespace Mint
                 case "deadmoon © 20":
                     l2.Text = s12;
                     break;
-                case "deadmoon © 201":
+                case "deadmoon © 202":
                     l2.Text = s13;
                     t2.Stop();
                     //t1.Start();
                     break;
-                case "deadmoon © 2018":
+                case "deadmoon © 2021":
                     l2.Text = s0;
                     break;
             }
