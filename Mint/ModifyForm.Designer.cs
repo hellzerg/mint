@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLocate = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtAppTitle = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAppLink = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtParams = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -51,24 +50,6 @@
             this.label1.Tag = "themeable";
             this.label1.Text = "Modify an app entry:";
             // 
-            // btnLocate
-            // 
-            this.btnLocate.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnLocate.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnLocate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
-            this.btnLocate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.btnLocate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLocate.ForeColor = System.Drawing.Color.White;
-            this.btnLocate.Location = new System.Drawing.Point(292, 73);
-            this.btnLocate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLocate.Name = "btnLocate";
-            this.btnLocate.Size = new System.Drawing.Size(30, 29);
-            this.btnLocate.TabIndex = 95;
-            this.btnLocate.Tag = "themeable";
-            this.btnLocate.Text = "...";
-            this.btnLocate.UseVisualStyleBackColor = false;
-            this.btnLocate.Click += new System.EventHandler(this.btnLocate_Click);
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -78,7 +59,7 @@
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(246, 247);
+            this.btnSave.Location = new System.Drawing.Point(246, 189);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 31);
@@ -94,43 +75,18 @@
             this.txtAppTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAppTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAppTitle.ForeColor = System.Drawing.Color.White;
-            this.txtAppTitle.Location = new System.Drawing.Point(14, 137);
-            this.txtAppTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAppTitle.Location = new System.Drawing.Point(14, 76);
+            this.txtAppTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtAppTitle.Name = "txtAppTitle";
             this.txtAppTitle.Size = new System.Drawing.Size(308, 29);
             this.txtAppTitle.TabIndex = 94;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Silver;
-            this.label5.Location = new System.Drawing.Point(10, 48);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 21);
-            this.label5.TabIndex = 93;
-            this.label5.Tag = "";
-            this.label5.Text = "Locate app:";
-            // 
-            // txtAppLink
-            // 
-            this.txtAppLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.txtAppLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAppLink.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAppLink.ForeColor = System.Drawing.Color.White;
-            this.txtAppLink.Location = new System.Drawing.Point(14, 73);
-            this.txtAppLink.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtAppLink.Name = "txtAppLink";
-            this.txtAppLink.Size = new System.Drawing.Size(275, 29);
-            this.txtAppLink.TabIndex = 91;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Silver;
-            this.label4.Location = new System.Drawing.Point(10, 112);
+            this.label4.Location = new System.Drawing.Point(10, 51);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 21);
@@ -148,7 +104,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(168, 247);
+            this.btnCancel.Location = new System.Drawing.Point(168, 189);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
@@ -158,6 +114,31 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // txtParams
+            // 
+            this.txtParams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtParams.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtParams.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParams.ForeColor = System.Drawing.Color.White;
+            this.txtParams.Location = new System.Drawing.Point(14, 144);
+            this.txtParams.Margin = new System.Windows.Forms.Padding(2);
+            this.txtParams.Name = "txtParams";
+            this.txtParams.Size = new System.Drawing.Size(308, 29);
+            this.txtParams.TabIndex = 98;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Silver;
+            this.label7.Location = new System.Drawing.Point(10, 121);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 21);
+            this.label7.TabIndex = 97;
+            this.label7.Tag = "";
+            this.label7.Text = "(Parameters)";
+            // 
             // ModifyForm
             // 
             this.AcceptButton = this.btnSave;
@@ -165,13 +146,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(331, 287);
+            this.ClientSize = new System.Drawing.Size(331, 229);
+            this.Controls.Add(this.txtParams);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnLocate);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtAppTitle);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtAppLink);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,12 +173,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLocate;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtAppTitle;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAppLink;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtParams;
+        private System.Windows.Forms.Label label7;
     }
 }

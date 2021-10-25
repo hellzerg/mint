@@ -59,6 +59,9 @@
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppsStructure.cs" />
+    <Compile Include="ColoredCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EmbeddedAssembly.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="MainForm.cs">

@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4] - 2021-10-25
+- Hotfix: Crash on launch when file not found
 
 ## [1.3] - 2020-12-20
 - Added: Support for shortcuts

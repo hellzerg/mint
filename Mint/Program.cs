@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mint
@@ -14,7 +11,7 @@ namespace Mint
 
         // Enter current version here
         internal readonly static float Major = 1;
-        internal readonly static float Minor = 3;
+        internal readonly static float Minor = 4;
 
         /* END OF VERSION PROPERTIES */
 
@@ -54,7 +51,7 @@ namespace Mint
                     MessageBox.Show("Mint is already running in the background!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Exit();
                 }
-            } 
+            }
         }
 
         private static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)

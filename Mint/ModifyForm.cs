@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mint
@@ -29,7 +21,7 @@ namespace Mint
             if (_appIndex > -1)
             {
                 txtAppTitle.Text = _main.AppsStructure.Apps[_appIndex].AppTitle;
-                txtAppLink.Text = _main.AppsStructure.Apps[_appIndex].AppLink;
+                txtParams.Text = _main.AppsStructure.Apps[_appIndex].AppParams;
             }
         }
 
@@ -43,46 +35,19 @@ namespace Mint
 
         }
 
-        private void btnLocate_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-
-            dialog.Title = "Mint | Select an application...";
-            dialog.Filter = "Applications | *.exe";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                txtAppLink.Text = dialog.FileName;
-                if (string.IsNullOrEmpty(txtAppTitle.Text)) txtAppTitle.Text = dialog.SafeFileName.Replace(".exe", string.Empty);
-            }
-        }
-
         private void ModifyAppEntry()
         {
-            if (!string.IsNullOrEmpty(txtAppLink.Text) && !string.IsNullOrEmpty(txtAppTitle.Text))
+            if (!string.IsNullOrEmpty(txtAppTitle.Text))
             {
-                if (File.Exists(txtAppLink.Text))
+                for (int i = 0; i < _main.AppsStructure.Apps.Count; i++)
                 {
-                    for (int i = 0; i < _main.AppsStructure.Apps.Count; i++)
-                    {
-                        if (i == _appIndex) continue;
-
-                        if (_main.AppsStructure.Apps[i].AppLink == txtAppLink.Text || _main.AppsStructure.Apps[i].AppTitle == txtAppTitle.Text)
-                        {
-                            MessageBox.Show("Specified app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
-                    }
-
-                    _main.AppsStructure.Apps[_appIndex].AppTitle = txtAppTitle.Text;
-                    _main.AppsStructure.Apps[_appIndex].AppLink = txtAppLink.Text;
-
-                    this.Close();
+                    if (i == _appIndex) continue;
                 }
-                else
-                {
-                    MessageBox.Show("Specified app does not exist!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+
+                _main.AppsStructure.Apps[_appIndex].AppTitle = txtAppTitle.Text;
+                _main.AppsStructure.Apps[_appIndex].AppParams = txtParams.Text;
+
+                this.Close();
             }
             else
             {

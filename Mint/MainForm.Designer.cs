@@ -37,7 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
-            this.checkAutoStart = new System.Windows.Forms.CheckBox();
+            this.checkAutoStart = new ColoredCheckBox();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -360,6 +360,7 @@
             this.listApps.Name = "listApps";
             this.listApps.Size = new System.Drawing.Size(258, 393);
             this.listApps.TabIndex = 78;
+            this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
             // 
             // label3
             // 
@@ -567,7 +568,7 @@
             this.launcherMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.launcherMenu.Name = "launcherMenu";
             this.launcherMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.launcherMenu.Size = new System.Drawing.Size(181, 26);
+            this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
             // 
             // MainForm
@@ -636,7 +637,7 @@
         private System.Windows.Forms.RadioButton radioMagma;
         private System.Windows.Forms.RadioButton radioOcean;
         private System.Windows.Forms.RadioButton radioZerg;
-        private System.Windows.Forms.CheckBox checkAutoStart;
+        private ColoredCheckBox checkAutoStart;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtParams;

@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using System.Net;
-using System.Diagnostics;
+﻿using IWshRuntimeLibrary;
 using Newtonsoft.Json;
-using IWshRuntimeLibrary;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Mint
 {
@@ -141,10 +139,18 @@ namespace Mint
 
             if (AppsStructure.Apps != null)
             {
+                ToolStripItem i;
                 foreach (App x in AppsStructure.Apps)
                 {
-                    
-                    ToolStripMenuItem i = new ToolStripMenuItem(x.AppTitle, (Icon.ExtractAssociatedIcon(x.AppLink)).ToBitmap());
+                    if (System.IO.File.Exists(x.AppLink))
+                    {
+                        i = new ToolStripMenuItem(x.AppTitle, (Icon.ExtractAssociatedIcon(x.AppLink)).ToBitmap());
+                    }
+                    else
+                    {
+                        i = new ToolStripMenuItem(x.AppTitle, null);
+                    }
+
                     launcherMenu.Items.Add(i);
                 }
             }
@@ -325,7 +331,7 @@ namespace Mint
             try
             {
                 App appX = AppsStructure.Apps.Find(x => x.AppTitle == app);
-                
+
                 Process p = new Process();
                 p.StartInfo.WorkingDirectory = Path.GetDirectoryName(appX.AppLink);
                 p.StartInfo.Arguments = appX.AppParams;
@@ -437,7 +443,7 @@ namespace Mint
             {
                 if (dialog.FileName.EndsWith(".lnk"))
                 {
-                    WshShell shell = new WshShell(); 
+                    WshShell shell = new WshShell();
                     IWshShortcut link = (IWshShortcut)shell.CreateShortcut(dialog.FileName);
 
                     txtAppLink.Text = link.TargetPath;
@@ -510,6 +516,20 @@ namespace Mint
             LoadAppsStructure();
             LoadAppsList();
             BuildLauncherMenu();
+        }
+
+        private void listApps_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listApps.SelectedIndex > -1)
+            {
+                ModifyForm f = new ModifyForm(listApps.SelectedIndex, this);
+                f.ShowDialog();
+
+                SaveAppsStructure();
+                LoadAppsStructure();
+                LoadAppsList();
+                BuildLauncherMenu();
+            }
         }
     }
 }
