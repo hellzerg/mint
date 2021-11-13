@@ -159,7 +159,7 @@ namespace Mint
 
             foreach (ToolStripMenuItem y in launcherMenu.Items)
             {
-                y.ForeColor = Color.White;
+                y.ForeColor = Color.GhostWhite;
             }
         }
 
