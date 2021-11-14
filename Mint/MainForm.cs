@@ -155,6 +155,13 @@ namespace Mint
                 }
             }
 
+            //ToolStripMenuItem pi = new ToolStripMenuItem("Servers");
+            //ToolStripMenuItem si = new ToolStripMenuItem("Windows VPS");
+            //ToolStripMenuItem si2 = new ToolStripMenuItem("Linux SSH");
+            //pi.DropDownItems.Add(si);
+            //pi.DropDownItems.Add(si2);
+            //launcherMenu.Items.Add(pi);
+
             launcherMenu.Items.Add("Exit");
 
             foreach (ToolStripMenuItem y in launcherMenu.Items)

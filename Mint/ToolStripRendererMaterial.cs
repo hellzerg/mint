@@ -9,10 +9,35 @@ namespace Mint
         {
 
         }
+
+
+        protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+        {
+            var tsMenuItem = e.Item as ToolStripMenuItem;
+            if (tsMenuItem != null)
+                e.TextColor = Color.GhostWhite;
+            base.OnRenderItemText(e);
+        }
+
+        protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
+        {
+            var tsMenuItem = e.Item as ToolStripMenuItem;
+            if (tsMenuItem != null)
+                e.ArrowColor = Color.GhostWhite;
+            base.OnRenderArrow(e);
+        }
     }
 
     internal class ColorsMaterial : ProfessionalColorTable
     {
+        public override Color ToolStripDropDownBackground
+        {
+            get
+            {
+                return Options.BackgroundColor;
+            }
+        }
+
         public override Color ImageMarginGradientBegin
         {
             get
