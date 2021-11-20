@@ -28,6 +28,7 @@ namespace Mint
         const string _jsonAssembly = @"Mint.Newtonsoft.Json.dll";
 
         const string _mutexGuid = "{DEADMOON-0EFC7B9A-D7FC-437F-B4B3-0118C643FE19-MINT}";
+        internal static Mutex MUTEX;
         static bool _notRunning;
 
         [STAThread]
@@ -36,7 +37,7 @@ namespace Mint
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (Mutex m = new Mutex(true, _mutexGuid, out _notRunning))
+            using (MUTEX = new Mutex(true, _mutexGuid, out _notRunning))
             {
                 if (_notRunning)
                 {
@@ -49,7 +50,7 @@ namespace Mint
                 else
                 {
                     MessageBox.Show("Mint is already running in the background!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Application.Exit();
+                    Environment.Exit(0);
                 }
             }
         }

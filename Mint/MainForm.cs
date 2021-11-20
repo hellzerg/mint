@@ -323,9 +323,6 @@ namespace Mint
                             // DOWNLOAD NEW VERSION
                             client.DownloadFile(NewDownloadLink(latestVersion), tempFile);
 
-                            // ALLOW MINT TO EXIT
-                            _allowExit = true;
-
                             // DELETE PREVIOUS BACK-UP
                             if (System.IO.File.Exists(archiveFile))
                             {
@@ -337,6 +334,15 @@ namespace Mint
 
                             // PATCH
                             System.IO.File.Move(tempFile, appFile);
+
+                            // BYPASS SINGLE-INSTANCE MECHANISM
+                            _allowExit = true;
+                            if (Program.MUTEX != null)
+                            {
+                                Program.MUTEX.ReleaseMutex();
+                                Program.MUTEX.Dispose();
+                                Program.MUTEX = null;
+                            }
 
                             Application.Restart();
                         }
