@@ -11,12 +11,13 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using File = System.IO.File;
 
 namespace Mint
 {
     public partial class MainForm : Form
     {
-        internal AppsStructure AppsStructure;
+        internal AppsStructure _AppsStructure;
 
         readonly string _latestVersionLink = "https://raw.githubusercontent.com/hellzerg/mint/master/version.txt";
 
@@ -27,6 +28,8 @@ namespace Mint
         readonly string _deleteAllAppsMessage = "Are you sure you want to delete all apps?";
 
         bool _allowExit = false;
+
+        ToolStripMenuItem _ExitItem;
 
         public MainForm()
         {
@@ -40,9 +43,17 @@ namespace Mint
 
             LoadAppsStructure();
             LoadAppsList();
+            BuildExitItem();
             BuildLauncherMenu();
 
             LoadOptions();
+        }
+
+        private void BuildExitItem()
+        {
+            _ExitItem = new ToolStripMenuItem();
+            _ExitItem.ForeColor = Color.GhostWhite;
+            _ExitItem.Text = "Exit";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -54,12 +65,13 @@ namespace Mint
         {
             if (System.IO.File.Exists(Options.AppsStructureFile))
             {
-                AppsStructure = JsonConvert.DeserializeObject<AppsStructure>(System.IO.File.ReadAllText(Options.AppsStructureFile));
+                _AppsStructure = JsonConvert.DeserializeObject<AppsStructure>(System.IO.File.ReadAllText(Options.AppsStructureFile));
             }
             else
             {
-                AppsStructure = new AppsStructure();
-                AppsStructure.Apps = new List<App>();
+                _AppsStructure = new AppsStructure();
+                _AppsStructure.Apps = new List<App>();
+                _AppsStructure.Groups = new List<string>();
 
                 using (FileStream fs = System.IO.File.Open(Options.AppsStructureFile, FileMode.CreateNew))
                 using (StreamWriter sw = new StreamWriter(fs))
@@ -68,7 +80,7 @@ namespace Mint
                     jw.Formatting = Formatting.Indented;
 
                     JsonSerializer serializer = new JsonSerializer();
-                    serializer.Serialize(jw, AppsStructure);
+                    serializer.Serialize(jw, _AppsStructure);
                 }
             }
         }
@@ -84,26 +96,29 @@ namespace Mint
                 jw.Formatting = Formatting.Indented;
 
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(jw, AppsStructure);
+                serializer.Serialize(jw, _AppsStructure);
             }
         }
 
         private void LoadAppsList()
         {
             listApps.Items.Clear();
+            groupBox.Items.Clear();
 
-            if (AppsStructure != null)
+            if (_AppsStructure != null)
             {
-                if (AppsStructure.Apps != null)
+                if (_AppsStructure.Groups != null) groupBox.Items.AddRange(_AppsStructure.Groups.ToArray());
+
+                if (_AppsStructure.Apps != null)
                 {
-                    foreach (App x in AppsStructure.Apps)
+                    foreach (App x in _AppsStructure.Apps)
                     {
                         listApps.Items.Add(x.AppTitle);
                     }
                 }
             }
 
-            label3.Text = string.Format("Apps ({0})", AppsStructure.Apps.Count);
+            label3.Text = string.Format("Apps ({0})", _AppsStructure.Apps.Count);
         }
 
         private void LoadOptions()
@@ -137,37 +152,75 @@ namespace Mint
         {
             launcherMenu.Items.Clear();
 
-            if (AppsStructure.Apps != null)
+            if (_AppsStructure.Apps != null)
             {
-                ToolStripItem i;
-                foreach (App x in AppsStructure.Apps)
+                ToolStripMenuItem i;
+                ToolStripMenuItem subItem;
+
+                if (_AppsStructure.Groups != null)
                 {
-                    if (System.IO.File.Exists(x.AppLink))
+                    foreach (string group in _AppsStructure.Groups)
                     {
-                        i = new ToolStripMenuItem(x.AppTitle, (Icon.ExtractAssociatedIcon(x.AppLink)).ToBitmap());
+                        if (_AppsStructure.Apps.Find(a => a.AppGroup == group) == null) continue;
+
+                        i = new ToolStripMenuItem(group, null);
+                        i.Name = $"gi_{group}";
+                        i.ForeColor = Color.GhostWhite;
+                        i.Tag = "GroupItem";
+                        launcherMenu.Items.Add(i);
+                    }
+
+                    if (_AppsStructure.Groups.Count > 0) launcherMenu.Items.Add("-");
+                }
+
+                bool isDeadItem = false;
+
+                foreach (App x in _AppsStructure.Apps.OrderBy(o => o.AppGroup))
+                {
+                    isDeadItem = !File.Exists(x.AppLink);
+
+                    if (!string.IsNullOrEmpty(x.AppGroup))
+                    {
+                        subItem = new ToolStripMenuItem(x.AppTitle, !isDeadItem ? Icon.ExtractAssociatedIcon(x.AppLink).ToBitmap() : null);
+                        subItem.Click += subItem_Click;
+                        if (!isDeadItem)
+                        {
+                            subItem.ForeColor = Color.GhostWhite;
+                        }
+                        else
+                        {
+                            subItem.ForeColor = Color.DimGray;
+                            subItem.Font = new Font("Segoe UI Semibold", 12f, FontStyle.Strikeout);
+                        }
+
+                        ((ToolStripMenuItem)(launcherMenu.Items[$"gi_{x.AppGroup}"])).DropDownItems.Add(subItem);
                     }
                     else
                     {
-                        i = new ToolStripMenuItem(x.AppTitle, null);
-                    }
+                        i = new ToolStripMenuItem(x.AppTitle, !isDeadItem ? (Icon.ExtractAssociatedIcon(x.AppLink)).ToBitmap() : null);
+                        if (!isDeadItem)
+                        {
+                            i.ForeColor = Color.GhostWhite;
+                        }
+                        else
+                        {
+                            i.ForeColor = Color.DimGray;
+                            i.Font = new Font("Segoe UI Semibold", 12f, FontStyle.Strikeout);
+                        }
 
-                    launcherMenu.Items.Add(i);
+                        launcherMenu.Items.Add(i);
+                    }
                 }
             }
 
-            //ToolStripMenuItem pi = new ToolStripMenuItem("Servers");
-            //ToolStripMenuItem si = new ToolStripMenuItem("Windows VPS");
-            //ToolStripMenuItem si2 = new ToolStripMenuItem("Linux SSH");
-            //pi.DropDownItems.Add(si);
-            //pi.DropDownItems.Add(si2);
-            //launcherMenu.Items.Add(pi);
+            launcherMenu.Items.Add("-");
+            launcherMenu.Items.Add(_ExitItem);
+        }
 
-            launcherMenu.Items.Add("Exit");
-
-            foreach (ToolStripMenuItem y in launcherMenu.Items)
-            {
-                y.ForeColor = Color.GhostWhite;
-            }
+        private void subItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem o = (ToolStripMenuItem)sender;
+            LaunchApp(o.Text);
         }
 
         private void AddApp()
@@ -176,15 +229,15 @@ namespace Mint
             {
                 if (System.IO.File.Exists(txtAppLink.Text))
                 {
-                    if (AppsStructure.Apps.Find(x => x.AppLink == txtAppLink.Text) != null)
+                    if (_AppsStructure.Apps.Find(x => x.AppLink == txtAppLink.Text) != null)
                     {
-                        MessageBox.Show("Specified app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("This app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
-                    if (AppsStructure.Apps.Find(x => x.AppTitle == txtAppTitle.Text) != null)
+                    if (_AppsStructure.Apps.Find(x => x.AppTitle == txtAppTitle.Text) != null)
                     {
-                        MessageBox.Show("Specified app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("This app already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
@@ -192,8 +245,9 @@ namespace Mint
                     app.AppLink = txtAppLink.Text;
                     app.AppTitle = txtAppTitle.Text;
                     app.AppParams = txtParams.Text;
+                    app.AppGroup = groupBox.Text;
 
-                    AppsStructure.Apps.Add(app);
+                    _AppsStructure.Apps.Add(app);
                     SaveAppsStructure();
 
                     LoadAppsStructure();
@@ -308,7 +362,7 @@ namespace Mint
             if (MessageBox.Show(_deleteAppMessage + app, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 listApps.Items.RemoveAt(appIndex);
-                AppsStructure.Apps.RemoveAt(appIndex);
+                _AppsStructure.Apps.RemoveAt(appIndex);
 
                 SaveAppsStructure();
                 LoadAppsStructure();
@@ -323,7 +377,7 @@ namespace Mint
             if (MessageBox.Show(_deleteAllAppsMessage, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 listApps.Items.Clear();
-                AppsStructure.Apps.Clear();
+                _AppsStructure.Apps.Clear();
 
                 SaveAppsStructure();
                 LoadAppsStructure();
@@ -337,7 +391,10 @@ namespace Mint
         {
             try
             {
-                App appX = AppsStructure.Apps.Find(x => x.AppTitle == app);
+                App appX = _AppsStructure.Apps.Find(x => x.AppTitle == app);
+
+                if (appX == null) return;
+                if (!File.Exists(appX.AppLink)) return;
 
                 Process p = new Process();
                 p.StartInfo.WorkingDirectory = Path.GetDirectoryName(appX.AppLink);
@@ -516,7 +573,7 @@ namespace Mint
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            AppsStructure.Apps = AppsStructure.Apps.OrderBy(x => x.AppTitle).ToList();
+            _AppsStructure.Apps = _AppsStructure.Apps.OrderBy(x => x.AppTitle).ToList();
 
             SaveAppsStructure();
 
@@ -537,6 +594,15 @@ namespace Mint
                 LoadAppsList();
                 BuildLauncherMenu();
             }
+        }
+
+        private void btnGroups_Click(object sender, EventArgs e)
+        {
+            GroupsForm gf = new GroupsForm(_AppsStructure);
+            gf.ShowDialog(this);
+
+            groupBox.Items.Clear();
+            if (_AppsStructure.Groups != null) groupBox.Items.AddRange(_AppsStructure.Groups.ToArray());
         }
     }
 }

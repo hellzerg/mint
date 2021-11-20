@@ -11,7 +11,7 @@ namespace Mint
 
         // Enter current version here
         internal readonly static float Major = 1;
-        internal readonly static float Minor = 4;
+        internal readonly static float Minor = 5;
 
         /* END OF VERSION PROPERTIES */
 

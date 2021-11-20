@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Mint
@@ -20,8 +22,15 @@ namespace Mint
 
             if (_appIndex > -1)
             {
-                txtAppTitle.Text = _main.AppsStructure.Apps[_appIndex].AppTitle;
-                txtParams.Text = _main.AppsStructure.Apps[_appIndex].AppParams;
+                txtAppTitle.Text = _main._AppsStructure.Apps[_appIndex].AppTitle;
+                txtParams.Text = _main._AppsStructure.Apps[_appIndex].AppParams;
+                txtLink.Text = _main._AppsStructure.Apps[_appIndex].AppLink;
+
+                if (_main._AppsStructure.Groups != null)
+                {
+                    groupBox.Items.AddRange(_main._AppsStructure.Groups.ToArray());
+                    groupBox.Text = _main._AppsStructure.Apps[_appIndex].AppGroup;
+                }
             }
         }
 
@@ -39,13 +48,16 @@ namespace Mint
         {
             if (!string.IsNullOrEmpty(txtAppTitle.Text))
             {
-                for (int i = 0; i < _main.AppsStructure.Apps.Count; i++)
-                {
-                    if (i == _appIndex) continue;
-                }
+                // what the fuck is that ?...
+                //for (int i = 0; i < _main._AppsStructure.Apps.Count; i++)
+                //{
+                //    if (i == _appIndex) continue;
+                //}
 
-                _main.AppsStructure.Apps[_appIndex].AppTitle = txtAppTitle.Text;
-                _main.AppsStructure.Apps[_appIndex].AppParams = txtParams.Text;
+                _main._AppsStructure.Apps[_appIndex].AppTitle = txtAppTitle.Text;
+                _main._AppsStructure.Apps[_appIndex].AppParams = txtParams.Text;
+                _main._AppsStructure.Apps[_appIndex].AppLink = txtLink.Text;
+                _main._AppsStructure.Apps[_appIndex].AppGroup = groupBox.Text;
 
                 this.Close();
             }
@@ -58,6 +70,32 @@ namespace Mint
         private void btnSave_Click(object sender, EventArgs e)
         {
             ModifyAppEntry();
+        }
+
+        private void btnLocate_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            dialog.Title = "Mint | Select an application...";
+            dialog.Filter = "Applications | *.exe; *.lnk";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                if (dialog.FileName.EndsWith(".lnk"))
+                {
+                    WshShell shell = new WshShell();
+                    IWshShortcut link = (IWshShortcut)shell.CreateShortcut(dialog.FileName);
+
+                    txtLink.Text = link.TargetPath;
+                    txtAppTitle.Text = Path.GetFileNameWithoutExtension(dialog.FileName).Replace(".exe", string.Empty);
+                    txtParams.Text = link.Arguments;
+                }
+                else
+                {
+                    txtLink.Text = dialog.FileName;
+                    if (string.IsNullOrEmpty(txtAppTitle.Text)) txtAppTitle.Text = dialog.SafeFileName.Replace(".exe", string.Empty);
+                }
+            }
         }
     }
 }

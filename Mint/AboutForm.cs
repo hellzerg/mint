@@ -38,10 +38,7 @@ namespace Mint
             string s7 = "deadmoo";
             string s8 = "deadmoon";
             string s9 = "deadmoon © ";
-            string s10 = "deadmoon © 2";
-            string s11 = "deadmoon © 20";
-            string s12 = "deadmoon © 202";
-            string s13 = "deadmoon © 2021";
+            string s10 = "deadmoon © ∞";
 
             switch (l2.Text)
             {
@@ -74,19 +71,9 @@ namespace Mint
                     break;
                 case "deadmoon © ":
                     l2.Text = s10;
-                    break;
-                case "deadmoon © 2":
-                    l2.Text = s11;
-                    break;
-                case "deadmoon © 20":
-                    l2.Text = s12;
-                    break;
-                case "deadmoon © 202":
-                    l2.Text = s13;
                     t2.Stop();
-                    //t1.Start();
                     break;
-                case "deadmoon © 2021":
+                case "deadmoon © ∞":
                     l2.Text = s0;
                     break;
             }
@@ -94,7 +81,7 @@ namespace Mint
 
         private void l2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://elgaming.eu/deadmoon");
+            Process.Start("https://github.com/hellzerg/mint");
         }
 
         private void t1_Tick(object sender, EventArgs e)

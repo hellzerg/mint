@@ -7,6 +7,7 @@ namespace Mint
     public class AppsStructure
     {
         public List<App> Apps { get; set; }
+        public List<string> Groups { get; set; }
 
         public AppsStructure() { }
 
@@ -21,6 +22,7 @@ namespace Mint
     {
         public string AppTitle { get; set; }
         public string AppLink { get; set; }
+        public string AppGroup { get; set; }
         public string AppParams { get; set; }
     }
 }

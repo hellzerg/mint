@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5] - 2021-11-21
+- New: Groups and submenus
+- Lots of bug fixes and improvements
+
 ## [1.4] - 2021-10-25
 - Hotfix: Crash on launch when file not found
 

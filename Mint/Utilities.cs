@@ -37,7 +37,7 @@ namespace Mint
             }
             catch
             {
-                MessageBox.Show("Something went wrong. Please try running Mint as administrator!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Permissions are needed. Please try running Mint as administrator!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

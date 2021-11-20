@@ -11,13 +11,21 @@ namespace Mint
         }
 
 
-        protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
-        {
-            var tsMenuItem = e.Item as ToolStripMenuItem;
-            if (tsMenuItem != null)
-                e.TextColor = Color.GhostWhite;
-            base.OnRenderItemText(e);
-        }
+        //protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+        //{
+        //    var tsMenuItem = e.Item as ToolStripMenuItem;
+        //    if (tsMenuItem != null)
+        //        e.TextColor = Color.GhostWhite;
+        //    base.OnRenderItemText(e);
+        //}
+
+        //protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs e)
+        //{
+        //    var tsMenuItem = e.Item as ToolStripMenuItem;
+        //    if (tsMenuItem != null)
+        //        e.Graphics.bru
+        //    base.OnRenderSeparator(e);
+        //}
 
         protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
         {
@@ -64,7 +72,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundColor;
+                return Options.BackgroundColor;
             }
         }
 
@@ -72,7 +80,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundColor;
+                return Options.ForegroundAccentColor;
             }
         }
 
@@ -104,7 +112,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundColor;
+                return Options.ForegroundAccentColor;
             }
         }
     }

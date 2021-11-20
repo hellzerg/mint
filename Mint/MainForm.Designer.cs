@@ -37,7 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
-            this.checkAutoStart = new ColoredCheckBox();
+            this.checkAutoStart = new Mint.ColoredCheckBox();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -54,6 +54,9 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.panelAddApp = new System.Windows.Forms.Panel();
+            this.btnGroups = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox = new Mint.ColoredBox();
             this.txtParams = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
@@ -96,7 +99,7 @@
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(531, 10);
+            this.btnUpdate.Location = new System.Drawing.Point(531, 15);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 31);
@@ -152,7 +155,7 @@
             this.botPanel.Location = new System.Drawing.Point(0, 62);
             this.botPanel.Margin = new System.Windows.Forms.Padding(2);
             this.botPanel.Name = "botPanel";
-            this.botPanel.Size = new System.Drawing.Size(618, 523);
+            this.botPanel.Size = new System.Drawing.Size(618, 557);
             this.botPanel.TabIndex = 9;
             // 
             // panelOptions
@@ -166,7 +169,7 @@
             this.panelOptions.Controls.Add(this.radioOcean);
             this.panelOptions.Controls.Add(this.radioZerg);
             this.panelOptions.Controls.Add(this.label6);
-            this.panelOptions.Location = new System.Drawing.Point(10, 312);
+            this.panelOptions.Location = new System.Drawing.Point(10, 346);
             this.panelOptions.Margin = new System.Windows.Forms.Padding(2);
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Size = new System.Drawing.Size(296, 200);
@@ -297,7 +300,7 @@
             this.panelApps.Location = new System.Drawing.Point(310, 14);
             this.panelApps.Margin = new System.Windows.Forms.Padding(2);
             this.panelApps.Name = "panelApps";
-            this.panelApps.Size = new System.Drawing.Size(296, 498);
+            this.panelApps.Size = new System.Drawing.Size(296, 532);
             this.panelApps.TabIndex = 90;
             // 
             // btnSort
@@ -326,10 +329,10 @@
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(130, 445);
+            this.btnEdit.Location = new System.Drawing.Point(104, 491);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(71, 31);
+            this.btnEdit.Size = new System.Drawing.Size(84, 31);
             this.btnEdit.TabIndex = 84;
             this.btnEdit.Tag = "themeable";
             this.btnEdit.Text = "Modify";
@@ -343,7 +346,7 @@
             this.panel2.Location = new System.Drawing.Point(16, 46);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(260, 395);
+            this.panel2.Size = new System.Drawing.Size(260, 441);
             this.panel2.TabIndex = 83;
             // 
             // listApps
@@ -358,7 +361,7 @@
             this.listApps.Location = new System.Drawing.Point(0, 0);
             this.listApps.Margin = new System.Windows.Forms.Padding(2);
             this.listApps.Name = "listApps";
-            this.listApps.Size = new System.Drawing.Size(258, 393);
+            this.listApps.Size = new System.Drawing.Size(258, 439);
             this.listApps.TabIndex = 78;
             this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
             // 
@@ -383,10 +386,10 @@
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(205, 445);
+            this.btnDelete.Location = new System.Drawing.Point(192, 491);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(71, 31);
+            this.btnDelete.Size = new System.Drawing.Size(84, 31);
             this.btnDelete.TabIndex = 81;
             this.btnDelete.Tag = "themeable";
             this.btnDelete.Text = "Delete";
@@ -401,10 +404,10 @@
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(17, 445);
+            this.btnClear.Location = new System.Drawing.Point(16, 491);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(71, 31);
+            this.btnClear.Size = new System.Drawing.Size(84, 31);
             this.btnClear.TabIndex = 79;
             this.btnClear.Tag = "themeable";
             this.btnClear.Text = "Clear";
@@ -414,6 +417,9 @@
             // panelAddApp
             // 
             this.panelAddApp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAddApp.Controls.Add(this.btnGroups);
+            this.panelAddApp.Controls.Add(this.label8);
+            this.panelAddApp.Controls.Add(this.groupBox);
             this.panelAddApp.Controls.Add(this.txtParams);
             this.panelAddApp.Controls.Add(this.label7);
             this.panelAddApp.Controls.Add(this.btnLocate);
@@ -426,33 +432,79 @@
             this.panelAddApp.Location = new System.Drawing.Point(10, 14);
             this.panelAddApp.Margin = new System.Windows.Forms.Padding(2);
             this.panelAddApp.Name = "panelAddApp";
-            this.panelAddApp.Size = new System.Drawing.Size(296, 294);
+            this.panelAddApp.Size = new System.Drawing.Size(296, 328);
             this.panelAddApp.TabIndex = 89;
+            // 
+            // btnGroups
+            // 
+            this.btnGroups.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnGroups.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnGroups.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGroups.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGroups.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGroups.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroups.ForeColor = System.Drawing.Color.White;
+            this.btnGroups.Location = new System.Drawing.Point(225, 165);
+            this.btnGroups.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGroups.Name = "btnGroups";
+            this.btnGroups.Size = new System.Drawing.Size(53, 25);
+            this.btnGroups.TabIndex = 94;
+            this.btnGroups.Tag = "themeable";
+            this.btnGroups.Text = "New";
+            this.btnGroups.UseVisualStyleBackColor = false;
+            this.btnGroups.Click += new System.EventHandler(this.btnGroups_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Silver;
+            this.label8.Location = new System.Drawing.Point(10, 142);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(115, 19);
+            this.label8.TabIndex = 93;
+            this.label8.Tag = "";
+            this.label8.Text = "Group (optional)";
+            // 
+            // groupBox
+            // 
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BorderColor = System.Drawing.Color.Gray;
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(14, 165);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(206, 25);
+            this.groupBox.TabIndex = 92;
             // 
             // txtParams
             // 
             this.txtParams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtParams.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtParams.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParams.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtParams.ForeColor = System.Drawing.Color.White;
-            this.txtParams.Location = new System.Drawing.Point(14, 211);
+            this.txtParams.Location = new System.Drawing.Point(14, 213);
             this.txtParams.Margin = new System.Windows.Forms.Padding(2);
             this.txtParams.Name = "txtParams";
-            this.txtParams.Size = new System.Drawing.Size(264, 29);
+            this.txtParams.Size = new System.Drawing.Size(264, 25);
             this.txtParams.TabIndex = 91;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Silver;
-            this.label7.Location = new System.Drawing.Point(10, 188);
+            this.label7.Location = new System.Drawing.Point(10, 192);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 21);
+            this.label7.Size = new System.Drawing.Size(147, 19);
             this.label7.TabIndex = 90;
             this.label7.Tag = "";
-            this.label7.Text = "(Parameters)";
+            this.label7.Text = "Parameters (optional)";
             // 
             // btnLocate
             // 
@@ -462,10 +514,10 @@
             this.btnLocate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnLocate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLocate.ForeColor = System.Drawing.Color.White;
-            this.btnLocate.Location = new System.Drawing.Point(247, 78);
+            this.btnLocate.Location = new System.Drawing.Point(247, 67);
             this.btnLocate.Margin = new System.Windows.Forms.Padding(2);
             this.btnLocate.Name = "btnLocate";
-            this.btnLocate.Size = new System.Drawing.Size(30, 29);
+            this.btnLocate.Size = new System.Drawing.Size(31, 25);
             this.btnLocate.TabIndex = 89;
             this.btnLocate.Tag = "themeable";
             this.btnLocate.Text = "...";
@@ -480,10 +532,10 @@
             this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(203, 244);
+            this.btnAdd.Location = new System.Drawing.Point(95, 264);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 31);
+            this.btnAdd.Size = new System.Drawing.Size(104, 31);
             this.btnAdd.TabIndex = 80;
             this.btnAdd.Tag = "themeable";
             this.btnAdd.Text = "Add";
@@ -494,12 +546,12 @@
             // 
             this.txtAppTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtAppTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAppTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAppTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAppTitle.ForeColor = System.Drawing.Color.White;
-            this.txtAppTitle.Location = new System.Drawing.Point(14, 142);
+            this.txtAppTitle.Location = new System.Drawing.Point(14, 115);
             this.txtAppTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtAppTitle.Name = "txtAppTitle";
-            this.txtAppTitle.Size = new System.Drawing.Size(264, 29);
+            this.txtAppTitle.Size = new System.Drawing.Size(264, 25);
             this.txtAppTitle.TabIndex = 88;
             // 
             // label1
@@ -518,12 +570,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Silver;
-            this.label5.Location = new System.Drawing.Point(10, 54);
+            this.label5.Location = new System.Drawing.Point(10, 46);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 21);
+            this.label5.Size = new System.Drawing.Size(80, 19);
             this.label5.TabIndex = 87;
             this.label5.Tag = "";
             this.label5.Text = "Locate app:";
@@ -532,23 +584,23 @@
             // 
             this.txtAppLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtAppLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAppLink.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAppLink.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAppLink.ForeColor = System.Drawing.Color.White;
-            this.txtAppLink.Location = new System.Drawing.Point(14, 78);
+            this.txtAppLink.Location = new System.Drawing.Point(14, 67);
             this.txtAppLink.Margin = new System.Windows.Forms.Padding(2);
             this.txtAppLink.Name = "txtAppLink";
-            this.txtAppLink.Size = new System.Drawing.Size(230, 29);
+            this.txtAppLink.Size = new System.Drawing.Size(230, 25);
             this.txtAppLink.TabIndex = 85;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Silver;
-            this.label4.Location = new System.Drawing.Point(10, 118);
+            this.label4.Location = new System.Drawing.Point(10, 94);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 21);
+            this.label4.Size = new System.Drawing.Size(66, 19);
             this.label4.TabIndex = 86;
             this.label4.Tag = "";
             this.label4.Text = "App title:";
@@ -576,7 +628,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(618, 585);
+            this.ClientSize = new System.Drawing.Size(618, 619);
             this.Controls.Add(this.botPanel);
             this.Controls.Add(this.topPanel);
             this.DoubleBuffered = true;
@@ -643,6 +695,9 @@
         private System.Windows.Forms.TextBox txtParams;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Label label8;
+        private ColoredBox groupBox;
+        private System.Windows.Forms.Button btnGroups;
     }
 }
 
