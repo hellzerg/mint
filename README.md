@@ -1,6 +1,16 @@
+<p align="center">
+   <img src="banner.png">
+</p> 
+
 ## Summary: ##
 
 A minimal app launcher residing in your taskbar
+
+<p align="center">
+	<a href="https://github.com/hellzerg/mint/releases/download/1.5/Mint-1.5.exe" target="_blank">
+		<img src="download-button.png">
+	</a>
+</p> 
 
 ## Features: ##
 
