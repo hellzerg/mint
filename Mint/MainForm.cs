@@ -47,18 +47,22 @@ namespace Mint
             BuildLauncherMenu();
 
             LoadOptions();
+            lblversion.Text += Program.GetCurrentVersionToString();
+            this.AllowDrop = true;
+
         }
 
         private void BuildExitItem()
         {
             _ExitItem = new ToolStripMenuItem();
             _ExitItem.ForeColor = Color.GhostWhite;
+            _ExitItem.Font = new Font("Segoe UI Semibold", 10f);
             _ExitItem.Text = "Exit";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lblversion.Text += Program.GetCurrentVersionToString();
+
         }
 
         private void LoadAppsStructure()
@@ -87,7 +91,7 @@ namespace Mint
 
         private void SaveAppsStructure()
         {
-            System.IO.File.WriteAllText(Options.AppsStructureFile, string.Empty);
+            File.WriteAllText(Options.AppsStructureFile, string.Empty);
 
             using (FileStream fs = System.IO.File.Open(Options.AppsStructureFile, FileMode.OpenOrCreate))
             using (StreamWriter sw = new StreamWriter(fs))
@@ -190,7 +194,7 @@ namespace Mint
                         else
                         {
                             subItem.ForeColor = Color.DimGray;
-                            subItem.Font = new Font("Segoe UI Semibold", 12f, FontStyle.Strikeout);
+                            subItem.Font = new Font("Segoe UI Semibold", 10f, FontStyle.Strikeout);
                         }
 
                         ((ToolStripMenuItem)(launcherMenu.Items[$"gi_{x.AppGroup}"])).DropDownItems.Add(subItem);
@@ -205,7 +209,7 @@ namespace Mint
                         else
                         {
                             i.ForeColor = Color.DimGray;
-                            i.Font = new Font("Segoe UI Semibold", 12f, FontStyle.Strikeout);
+                            i.Font = new Font("Segoe UI Semibold", 10f, FontStyle.Strikeout);
                         }
 
                         launcherMenu.Items.Add(i);
@@ -502,6 +506,24 @@ namespace Mint
             }
         }
 
+        private void LoadFile(string file)
+        {
+            if (file.EndsWith(".lnk"))
+            {
+                WshShell shell = new WshShell();
+                IWshShortcut link = (IWshShortcut)shell.CreateShortcut(file);
+
+                txtAppLink.Text = link.TargetPath;
+                txtAppTitle.Text = Path.GetFileNameWithoutExtension(link.TargetPath);
+                txtParams.Text = link.Arguments;
+            }
+            else if (file.EndsWith(".exe"))
+            {
+                txtAppLink.Text = file;
+                txtAppTitle.Text = Path.GetFileNameWithoutExtension(file);
+            }
+        }
+
         private void btnLocate_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -509,23 +531,7 @@ namespace Mint
             dialog.Title = "Mint | Select an application...";
             dialog.Filter = "Applications | *.exe; *.lnk";
 
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                if (dialog.FileName.EndsWith(".lnk"))
-                {
-                    WshShell shell = new WshShell();
-                    IWshShortcut link = (IWshShortcut)shell.CreateShortcut(dialog.FileName);
-
-                    txtAppLink.Text = link.TargetPath;
-                    txtAppTitle.Text = Path.GetFileNameWithoutExtension(dialog.FileName).Replace(".exe", string.Empty);
-                    txtParams.Text = link.Arguments;
-                }
-                else
-                {
-                    txtAppLink.Text = dialog.FileName;
-                    if (string.IsNullOrEmpty(txtAppTitle.Text)) txtAppTitle.Text = dialog.SafeFileName.Replace(".exe", string.Empty);
-                }
-            }
+            if (dialog.ShowDialog() == DialogResult.OK) LoadFile(dialog.FileName);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -609,6 +615,28 @@ namespace Mint
 
             groupBox.Items.Clear();
             if (_AppsStructure.Groups != null) groupBox.Items.AddRange(_AppsStructure.Groups.ToArray());
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            try
+            {
+                LoadFile(files[0]);
+            }
+            catch { }
+        }
+
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Link;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
         }
     }
 }

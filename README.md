@@ -7,7 +7,7 @@
 A minimal app launcher residing in your taskbar
 
 <p align="center">
-	<a href="https://github.com/hellzerg/mint/releases/download/1.5/Mint-1.5.exe" target="_blank">
+	<a href="https://github.com/hellzerg/mint/releases/download/1.6/Mint-1.6.exe" target="_blank">
 		<img src="download-button.png">
 	</a>
 </p> 
@@ -18,6 +18,7 @@ A minimal app launcher residing in your taskbar
 * Tray icon support
 * Parameters support
 * Fully customizable with custom groups & submenus
+* Drap n' Drop support for quickly adding apps
 
 ## Downloads: ##
 https://github.com/hellzerg/mint/releases
@@ -33,6 +34,6 @@ Compatible with Windows 7, 8.1, 10, 11
 
 ## Details: ##
 
-Latest version: 1.5
+Latest version: 1.6
 
-Released: November 21, 2021
+Released: November 27, 2021

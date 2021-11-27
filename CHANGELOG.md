@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6] - 2021-11-27
+- New: Drap n' Drop support for quickly adding apps
+
 ## [1.5] - 2021-11-21
 - New: Groups and submenus
 - Lots of bug fixes and improvements

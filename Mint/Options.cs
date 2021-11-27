@@ -16,7 +16,7 @@ namespace Mint
     {
         internal static Color ForegroundColor = Color.MediumOrchid;
         internal static Color ForegroundAccentColor = Color.DarkOrchid;
-        internal static Color BackgroundColor = Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+        internal static Color BackgroundColor = Color.FromArgb(20, 20, 20);
 
         internal readonly static string ThemeFlag = "themeable";
 
