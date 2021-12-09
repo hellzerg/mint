@@ -31,13 +31,23 @@ namespace Mint
         {
             var tsMenuItem = e.Item as ToolStripMenuItem;
             if (tsMenuItem != null)
-                e.ArrowColor = Color.GhostWhite;
+                e.ArrowColor = Color.Silver;
             base.OnRenderArrow(e);
         }
     }
 
     internal class ColorsMaterial : ProfessionalColorTable
     {
+        public override Color SeparatorLight
+        {
+            get { return Options.ForegroundColor; }
+        }
+
+        public override Color SeparatorDark
+        {
+            get { return Options.ForegroundColor; }
+        }
+
         public override Color ToolStripDropDownBackground
         {
             get

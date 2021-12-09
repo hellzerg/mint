@@ -49,7 +49,6 @@ namespace Mint
             LoadOptions();
             lblversion.Text += Program.GetCurrentVersionToString();
             this.AllowDrop = true;
-
         }
 
         private void BuildExitItem()
