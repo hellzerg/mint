@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
-            this.checkAutoStart = new Mint.ColoredCheckBox();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -56,7 +55,6 @@
             this.panelAddApp = new System.Windows.Forms.Panel();
             this.btnGroups = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox = new Mint.ColoredBox();
             this.txtParams = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
@@ -68,6 +66,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.checkAutoStart = new Mint.ColoredCheckBox();
+            this.groupBox = new Mint.ColoredBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.botPanel.SuspendLayout();
@@ -79,7 +79,7 @@
             // 
             // topPanel
             // 
-            this.topPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.topPanel.Controls.Add(this.btnUpdate);
             this.topPanel.Controls.Add(this.pictureBox1);
             this.topPanel.Controls.Add(this.lblversion);
@@ -95,6 +95,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -147,7 +148,6 @@
             // 
             // botPanel
             // 
-            this.botPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.botPanel.Controls.Add(this.panelOptions);
             this.botPanel.Controls.Add(this.panelApps);
             this.botPanel.Controls.Add(this.panelAddApp);
@@ -160,7 +160,7 @@
             // 
             // panelOptions
             // 
-            this.panelOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panelOptions.Controls.Add(this.checkAutoStart);
             this.panelOptions.Controls.Add(this.radioMinimal);
             this.panelOptions.Controls.Add(this.radioCaramel);
@@ -174,20 +174,6 @@
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Size = new System.Drawing.Size(296, 200);
             this.panelOptions.TabIndex = 91;
-            // 
-            // checkAutoStart
-            // 
-            this.checkAutoStart.AutoSize = true;
-            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
-            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
-            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
-            this.checkAutoStart.Name = "checkAutoStart";
-            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
-            this.checkAutoStart.TabIndex = 85;
-            this.checkAutoStart.Text = "Start with Windows";
-            this.checkAutoStart.UseVisualStyleBackColor = true;
-            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
             // 
             // radioMinimal
             // 
@@ -290,7 +276,7 @@
             // 
             // panelApps
             // 
-            this.panelApps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelApps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panelApps.Controls.Add(this.btnSort);
             this.panelApps.Controls.Add(this.btnEdit);
             this.panelApps.Controls.Add(this.panel2);
@@ -307,6 +293,7 @@
             // 
             this.btnSort.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnSort.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnSort.FlatAppearance.BorderSize = 0;
             this.btnSort.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSort.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -325,6 +312,7 @@
             // 
             this.btnEdit.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -341,7 +329,6 @@
             // 
             // panel2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.listApps);
             this.panel2.Location = new System.Drawing.Point(16, 46);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -361,7 +348,7 @@
             this.listApps.Location = new System.Drawing.Point(0, 0);
             this.listApps.Margin = new System.Windows.Forms.Padding(2);
             this.listApps.Name = "listApps";
-            this.listApps.Size = new System.Drawing.Size(258, 439);
+            this.listApps.Size = new System.Drawing.Size(260, 441);
             this.listApps.TabIndex = 78;
             this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
             // 
@@ -382,6 +369,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -389,7 +377,7 @@
             this.btnDelete.Location = new System.Drawing.Point(192, 491);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(84, 31);
+            this.btnDelete.Size = new System.Drawing.Size(83, 31);
             this.btnDelete.TabIndex = 81;
             this.btnDelete.Tag = "themeable";
             this.btnDelete.Text = "Delete";
@@ -400,14 +388,15 @@
             // 
             this.btnClear.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(16, 491);
+            this.btnClear.Location = new System.Drawing.Point(17, 491);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(84, 31);
+            this.btnClear.Size = new System.Drawing.Size(83, 31);
             this.btnClear.TabIndex = 79;
             this.btnClear.Tag = "themeable";
             this.btnClear.Text = "Clear";
@@ -416,7 +405,7 @@
             // 
             // panelAddApp
             // 
-            this.panelAddApp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAddApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panelAddApp.Controls.Add(this.btnGroups);
             this.panelAddApp.Controls.Add(this.label8);
             this.panelAddApp.Controls.Add(this.groupBox);
@@ -439,6 +428,7 @@
             // 
             this.btnGroups.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnGroups.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnGroups.FlatAppearance.BorderSize = 0;
             this.btnGroups.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnGroups.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnGroups.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -466,20 +456,6 @@
             this.label8.TabIndex = 93;
             this.label8.Tag = "";
             this.label8.Text = "Group (optional)";
-            // 
-            // groupBox
-            // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.groupBox.BorderColor = System.Drawing.Color.Gray;
-            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.FormattingEnabled = true;
-            this.groupBox.Location = new System.Drawing.Point(14, 165);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(206, 25);
-            this.groupBox.TabIndex = 92;
             // 
             // txtParams
             // 
@@ -510,6 +486,7 @@
             // 
             this.btnLocate.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnLocate.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnLocate.FlatAppearance.BorderSize = 0;
             this.btnLocate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnLocate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnLocate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -528,6 +505,7 @@
             // 
             this.btnAdd.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -620,8 +598,36 @@
             this.launcherMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.launcherMenu.Name = "launcherMenu";
             this.launcherMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.launcherMenu.Size = new System.Drawing.Size(181, 26);
+            this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
+            // 
+            // checkAutoStart
+            // 
+            this.checkAutoStart.AutoSize = true;
+            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
+            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
+            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
+            this.checkAutoStart.Name = "checkAutoStart";
+            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
+            this.checkAutoStart.TabIndex = 85;
+            this.checkAutoStart.Text = "Start with Windows";
+            this.checkAutoStart.UseVisualStyleBackColor = true;
+            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
+            // 
+            // groupBox
+            // 
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BorderColor = System.Drawing.Color.Gray;
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(14, 165);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(206, 25);
+            this.groupBox.TabIndex = 92;
             // 
             // MainForm
             // 

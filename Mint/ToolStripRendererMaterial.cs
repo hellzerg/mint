@@ -31,7 +31,7 @@ namespace Mint
         {
             var tsMenuItem = e.Item as ToolStripMenuItem;
             if (tsMenuItem != null)
-                e.ArrowColor = Color.Silver;
+                e.ArrowColor = Options.ForegroundColor;
             base.OnRenderArrow(e);
         }
     }
@@ -90,7 +90,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundAccentColor;
+                return Options.BackAccentColor;
             }
         }
 
@@ -98,7 +98,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundAccentColor;
+                return Options.BackAccentColor;
             }
         }
 
@@ -106,7 +106,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundAccentColor;
+                return Options.BackAccentColor;
             }
         }
 
@@ -114,7 +114,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundAccentColor;
+                return Options.BackAccentColor;
             }
         }
 
@@ -122,7 +122,7 @@ namespace Mint
         {
             get
             {
-                return Options.ForegroundAccentColor;
+                return Options.BackAccentColor;
             }
         }
     }

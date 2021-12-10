@@ -573,7 +573,7 @@ namespace Mint
             if (listApps.SelectedIndex > -1)
             {
                 ModifyForm f = new ModifyForm(listApps.SelectedIndex, this);
-                f.ShowDialog();
+                f.ShowDialog(this);
 
                 SaveAppsStructure();
                 LoadAppsStructure();

@@ -40,7 +40,7 @@
             // 
             // groupBox
             // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.groupBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -58,6 +58,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -74,7 +75,7 @@
             // 
             // txtGroup
             // 
-            this.txtGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.txtGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGroup.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGroup.ForeColor = System.Drawing.Color.White;
@@ -89,6 +90,7 @@
             this.btnAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddItem.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnAddItem.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddItem.FlatAppearance.BorderSize = 0;
             this.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -117,6 +119,7 @@
             this.btnSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSort.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnSort.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnSort.FlatAppearance.BorderSize = 0;
             this.btnSort.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSort.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
