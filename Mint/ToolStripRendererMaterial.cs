@@ -31,7 +31,7 @@ namespace Mint
         {
             var tsMenuItem = e.Item as ToolStripMenuItem;
             if (tsMenuItem != null)
-                e.ArrowColor = Options.ForegroundColor;
+                e.ArrowColor = Color.DimGray;
             base.OnRenderArrow(e);
         }
     }
@@ -40,12 +40,12 @@ namespace Mint
     {
         public override Color SeparatorLight
         {
-            get { return Options.ForegroundColor; }
+            get { return Color.DimGray; }
         }
 
         public override Color SeparatorDark
         {
-            get { return Options.ForegroundColor; }
+            get { return Color.DimGray; }
         }
 
         public override Color ToolStripDropDownBackground

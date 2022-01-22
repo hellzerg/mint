@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
+            this.checkAutoStart = new Mint.ColoredCheckBox();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -55,6 +56,7 @@
             this.panelAddApp = new System.Windows.Forms.Panel();
             this.btnGroups = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.groupBox = new Mint.ColoredBox();
             this.txtParams = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
@@ -66,8 +68,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.checkAutoStart = new Mint.ColoredCheckBox();
-            this.groupBox = new Mint.ColoredBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.botPanel.SuspendLayout();
@@ -174,6 +174,20 @@
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Size = new System.Drawing.Size(296, 200);
             this.panelOptions.TabIndex = 91;
+            // 
+            // checkAutoStart
+            // 
+            this.checkAutoStart.AutoSize = true;
+            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
+            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
+            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
+            this.checkAutoStart.Name = "checkAutoStart";
+            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
+            this.checkAutoStart.TabIndex = 85;
+            this.checkAutoStart.Text = "Start with Windows";
+            this.checkAutoStart.UseVisualStyleBackColor = true;
+            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
             // 
             // radioMinimal
             // 
@@ -457,6 +471,21 @@
             this.label8.Tag = "";
             this.label8.Text = "Group (optional)";
             // 
+            // groupBox
+            // 
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BorderColor = System.Drawing.Color.Gray;
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(14, 165);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(206, 25);
+            this.groupBox.TabIndex = 92;
+            this.groupBox.SelectedIndexChanged += new System.EventHandler(this.groupBox_SelectedIndexChanged);
+            // 
             // txtParams
             // 
             this.txtParams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -600,34 +629,6 @@
             this.launcherMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
-            // 
-            // checkAutoStart
-            // 
-            this.checkAutoStart.AutoSize = true;
-            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
-            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
-            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
-            this.checkAutoStart.Name = "checkAutoStart";
-            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
-            this.checkAutoStart.TabIndex = 85;
-            this.checkAutoStart.Text = "Start with Windows";
-            this.checkAutoStart.UseVisualStyleBackColor = true;
-            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
-            // 
-            // groupBox
-            // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.groupBox.BorderColor = System.Drawing.Color.Gray;
-            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.FormattingEnabled = true;
-            this.groupBox.Location = new System.Drawing.Point(14, 165);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(206, 25);
-            this.groupBox.TabIndex = 92;
             // 
             // MainForm
             // 

@@ -637,5 +637,10 @@ namespace Mint
                 e.Effect = DragDropEffects.None;
             }
         }
+
+        private void groupBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
