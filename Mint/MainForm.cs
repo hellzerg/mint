@@ -28,6 +28,7 @@ namespace Mint
         readonly string _deleteAllAppsMessage = "Are you sure you want to delete all apps?";
 
         bool _allowExit = false;
+        bool _allowManualSort = false;
 
         ToolStripMenuItem _ExitItem;
 
@@ -40,6 +41,7 @@ namespace Mint
 
             Options.ApplyTheme(this);
             launcherMenu.Renderer = new ToolStripRendererMaterial();
+            sortMenu.Renderer = new ToolStripRendererMaterial();
 
             LoadAppsStructure();
             LoadAppsList();
@@ -48,7 +50,9 @@ namespace Mint
 
             LoadOptions();
             lblversion.Text += Program.GetCurrentVersionToString();
+
             this.AllowDrop = true;
+            listApps.AllowDrop = _allowManualSort;
         }
 
         private void BuildExitItem()
@@ -584,10 +588,23 @@ namespace Mint
 
         private void btnSort_Click(object sender, EventArgs e)
         {
+            sortMenu.Show(Cursor.Position.X, Cursor.Position.Y);
+        }
+
+        private void SortByAZ(bool inversed)
+        {
             _AppsStructure.Apps = _AppsStructure.Apps.OrderBy(x => x.AppTitle).ToList();
+            if (inversed) _AppsStructure.Apps.Reverse();
 
             SaveAppsStructure();
+            LoadAppsStructure();
+            LoadAppsList();
+            BuildLauncherMenu();
+        }
 
+        private void SaveManualSort()
+        {
+            SaveAppsStructure();
             LoadAppsStructure();
             LoadAppsList();
             BuildLauncherMenu();
@@ -641,6 +658,62 @@ namespace Mint
         private void groupBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listApps_DragDrop(object sender, DragEventArgs e)
+        {
+            Point point = listApps.PointToClient(new Point(e.X, e.Y));
+            int index = listApps.IndexFromPoint(point);
+            if (index < 0) index = listApps.Items.Count - 1;
+            object data = listApps.SelectedItem;
+
+            App a = _AppsStructure.Apps.Find(x => x.AppTitle == data.ToString());
+            if (a != null)
+            {
+                _AppsStructure.Apps.Remove(a);
+                _AppsStructure.Apps.Insert(index, a);
+            }
+
+            //listApps.Items.Remove(data);
+            //listApps.Items.Insert(index, data);
+
+            SaveManualSort();
+        }
+
+        private void listApps_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void listApps_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (listApps.SelectedItem == null) return;
+            listApps.DoDragDrop(listApps.SelectedItem, DragDropEffects.Move);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SortByAZ(false);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            SortByAZ(true);
+        }
+
+        private void enableManualSortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _allowManualSort = !_allowManualSort;
+            listApps.AllowDrop = _allowManualSort;
+            
+            if (_allowManualSort)
+            {
+                enableManualSortToolStripMenuItem.Text = "Disable manual sort";
+            }
+            else
+            {
+                enableManualSortToolStripMenuItem.Text = "Enable manual sort";
+            }
         }
     }
 }

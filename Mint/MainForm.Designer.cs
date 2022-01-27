@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
-            this.checkAutoStart = new Mint.ColoredCheckBox();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -56,7 +55,6 @@
             this.panelAddApp = new System.Windows.Forms.Panel();
             this.btnGroups = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox = new Mint.ColoredBox();
             this.txtParams = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
@@ -68,6 +66,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sortMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableManualSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkAutoStart = new Mint.ColoredCheckBox();
+            this.groupBox = new Mint.ColoredBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.botPanel.SuspendLayout();
@@ -75,6 +79,7 @@
             this.panelApps.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelAddApp.SuspendLayout();
+            this.sortMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanel
@@ -174,20 +179,6 @@
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Size = new System.Drawing.Size(296, 200);
             this.panelOptions.TabIndex = 91;
-            // 
-            // checkAutoStart
-            // 
-            this.checkAutoStart.AutoSize = true;
-            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
-            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
-            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
-            this.checkAutoStart.Name = "checkAutoStart";
-            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
-            this.checkAutoStart.TabIndex = 85;
-            this.checkAutoStart.Text = "Start with Windows";
-            this.checkAutoStart.UseVisualStyleBackColor = true;
-            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
             // 
             // radioMinimal
             // 
@@ -318,7 +309,7 @@
             this.btnSort.Size = new System.Drawing.Size(71, 31);
             this.btnSort.TabIndex = 92;
             this.btnSort.Tag = "themeable";
-            this.btnSort.Text = "Sort";
+            this.btnSort.Text = "Sort...";
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
@@ -364,7 +355,10 @@
             this.listApps.Name = "listApps";
             this.listApps.Size = new System.Drawing.Size(260, 441);
             this.listApps.TabIndex = 78;
+            this.listApps.DragDrop += new System.Windows.Forms.DragEventHandler(this.listApps_DragDrop);
+            this.listApps.DragOver += new System.Windows.Forms.DragEventHandler(this.listApps_DragOver);
             this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
+            this.listApps.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDown);
             // 
             // label3
             // 
@@ -470,21 +464,6 @@
             this.label8.TabIndex = 93;
             this.label8.Tag = "";
             this.label8.Text = "Group (optional)";
-            // 
-            // groupBox
-            // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.groupBox.BorderColor = System.Drawing.Color.Gray;
-            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.FormattingEnabled = true;
-            this.groupBox.Location = new System.Drawing.Point(14, 165);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(206, 25);
-            this.groupBox.TabIndex = 92;
-            this.groupBox.SelectedIndexChanged += new System.EventHandler(this.groupBox_SelectedIndexChanged);
             // 
             // txtParams
             // 
@@ -630,6 +609,73 @@
             this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
             // 
+            // sortMenu
+            // 
+            this.sortMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.sortMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sortMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.sortMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.enableManualSortToolStripMenuItem});
+            this.sortMenu.Name = "launcherMenu";
+            this.sortMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.sortMenu.ShowImageMargin = false;
+            this.sortMenu.Size = new System.Drawing.Size(173, 76);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.toolStripMenuItem1.Text = "Sort by A-Z";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 24);
+            this.toolStripMenuItem2.Text = "Sort by Z-A";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // enableManualSortToolStripMenuItem
+            // 
+            this.enableManualSortToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.enableManualSortToolStripMenuItem.Name = "enableManualSortToolStripMenuItem";
+            this.enableManualSortToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.enableManualSortToolStripMenuItem.Text = "Enable manual sort";
+            this.enableManualSortToolStripMenuItem.Click += new System.EventHandler(this.enableManualSortToolStripMenuItem_Click);
+            // 
+            // checkAutoStart
+            // 
+            this.checkAutoStart.AutoSize = true;
+            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
+            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
+            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
+            this.checkAutoStart.Name = "checkAutoStart";
+            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
+            this.checkAutoStart.TabIndex = 85;
+            this.checkAutoStart.Text = "Start with Windows";
+            this.checkAutoStart.UseVisualStyleBackColor = true;
+            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
+            // 
+            // groupBox
+            // 
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BorderColor = System.Drawing.Color.Gray;
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(14, 165);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(206, 25);
+            this.groupBox.TabIndex = 92;
+            this.groupBox.SelectedIndexChanged += new System.EventHandler(this.groupBox_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -663,6 +709,7 @@
             this.panel2.ResumeLayout(false);
             this.panelAddApp.ResumeLayout(false);
             this.panelAddApp.PerformLayout();
+            this.sortMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -707,6 +754,10 @@
         private System.Windows.Forms.Label label8;
         private ColoredBox groupBox;
         private System.Windows.Forms.Button btnGroups;
+        private System.Windows.Forms.ContextMenuStrip sortMenu;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem enableManualSortToolStripMenuItem;
     }
 }
 
