@@ -35,5 +35,7 @@ Compatible with Windows 7, 8.1, 10, 11
 ## Details: ##
 
 Latest version: 1.7
+
 Released: February 7, 2022
+
 SHA256: DE37BC4BE73891938E4CA52295B37BF2B27BF4EC644DF04F25C730FEAE039775
