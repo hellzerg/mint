@@ -40,6 +40,7 @@ namespace Mint
 
             Options.ApplyTheme(this);
             launcherMenu.Renderer = new MoonMenuRenderer();
+            helperMenu.Renderer = new MoonMenuRenderer();
 
             LoadAppsStructure();
             LoadAppsList();
@@ -90,12 +91,6 @@ namespace Mint
         private void SaveAppsStructure()
         {
             File.WriteAllText(Options.AppsStructureFile, string.Empty);
-
-            foreach (App s in _AppsStructure.Apps)
-            {
-                Console.WriteLine(s.AppTitle);
-            }
-            Console.WriteLine("--------------------------");
 
             using (FileStream fs = System.IO.File.Open(Options.AppsStructureFile, FileMode.OpenOrCreate))
             using (StreamWriter sw = new StreamWriter(fs))
@@ -560,14 +555,6 @@ namespace Mint
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            if (listApps.Items.Count > 0)
-            {
-                DeleteAllAppItems();
-            }
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             AboutForm f = new AboutForm();
@@ -592,6 +579,11 @@ namespace Mint
         }
 
         private void btnSort_Click(object sender, EventArgs e)
+        {
+            SortByAZ();
+        }
+
+        private void SortByAZ()
         {
             _AppsStructure.Apps = _AppsStructure.Apps.OrderBy(x => x.AppTitle).ToList();
             //if (inversed) _AppsStructure.Apps.Reverse();
@@ -633,6 +625,52 @@ namespace Mint
                 LoadFile(files[0]);
             }
             catch { }
+        }
+
+        private void listApps_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listApps.IndexFromPoint(e.Location) != ListBox.NoMatches)
+                {
+                    listApps.SelectedIndex = listApps.IndexFromPoint(e.Location);
+                }
+            }
+        }
+
+        private void sortByAZToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SortByAZ();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnDelete.PerformClick();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnEdit.PerformClick();
+        }
+
+        private void deleteAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listApps.Items.Count > 0)
+            {
+                DeleteAllAppItems();
+            }
+        }
+
+        private void locateFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listApps.SelectedIndex > -1)
+            {
+                App file = _AppsStructure.Apps.Find(x => x.AppTitle == listApps.SelectedItem.ToString());
+                if (file != null)
+                {
+                    if (File.Exists(file.AppLink)) Process.Start("explorer.exe", "/select, " + file.AppLink);
+                } 
+            }
         }
     }
 }

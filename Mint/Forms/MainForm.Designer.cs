@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
-            this.checkAutoStart = new Mint.MoonCheck();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -49,14 +48,11 @@
             this.btnSort = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listApps = new Mint.MoonList();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.panelAddApp = new System.Windows.Forms.Panel();
             this.btnGroups = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox = new Mint.MoonBox();
             this.txtParams = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
@@ -68,6 +64,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.helperMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortByAZToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locateFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkAutoStart = new Mint.MoonCheck();
+            this.listApps = new Mint.MoonList();
+            this.groupBox = new Mint.MoonBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.botPanel.SuspendLayout();
@@ -75,11 +82,13 @@
             this.panelApps.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelAddApp.SuspendLayout();
+            this.helperMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanel
             // 
-            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.topPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.topPanel.Controls.Add(this.btnUpdate);
             this.topPanel.Controls.Add(this.pictureBox1);
             this.topPanel.Controls.Add(this.lblversion);
@@ -148,6 +157,7 @@
             // 
             // botPanel
             // 
+            this.botPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.botPanel.Controls.Add(this.panelOptions);
             this.botPanel.Controls.Add(this.panelApps);
             this.botPanel.Controls.Add(this.panelAddApp);
@@ -160,7 +170,8 @@
             // 
             // panelOptions
             // 
-            this.panelOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panelOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelOptions.Controls.Add(this.checkAutoStart);
             this.panelOptions.Controls.Add(this.radioMinimal);
             this.panelOptions.Controls.Add(this.radioCaramel);
@@ -174,20 +185,6 @@
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Size = new System.Drawing.Size(296, 200);
             this.panelOptions.TabIndex = 91;
-            // 
-            // checkAutoStart
-            // 
-            this.checkAutoStart.AutoSize = true;
-            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
-            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
-            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
-            this.checkAutoStart.Name = "checkAutoStart";
-            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
-            this.checkAutoStart.TabIndex = 85;
-            this.checkAutoStart.Text = "Start with Windows";
-            this.checkAutoStart.UseVisualStyleBackColor = true;
-            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
             // 
             // radioMinimal
             // 
@@ -290,13 +287,13 @@
             // 
             // panelApps
             // 
-            this.panelApps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panelApps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelApps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelApps.Controls.Add(this.btnSort);
             this.panelApps.Controls.Add(this.btnEdit);
             this.panelApps.Controls.Add(this.panel2);
             this.panelApps.Controls.Add(this.label3);
             this.panelApps.Controls.Add(this.btnDelete);
-            this.panelApps.Controls.Add(this.btnClear);
             this.panelApps.Location = new System.Drawing.Point(310, 14);
             this.panelApps.Margin = new System.Windows.Forms.Padding(2);
             this.panelApps.Name = "panelApps";
@@ -331,13 +328,13 @@
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(104, 491);
+            this.btnEdit.Location = new System.Drawing.Point(149, 496);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(84, 31);
+            this.btnEdit.Size = new System.Drawing.Size(84, 26);
             this.btnEdit.TabIndex = 84;
             this.btnEdit.Tag = "themeable";
-            this.btnEdit.Text = "Modify";
+            this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -349,23 +346,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(260, 452);
             this.panel2.TabIndex = 83;
-            // 
-            // listApps
-            // 
-            this.listApps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.listApps.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listApps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listApps.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.listApps.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listApps.ForeColor = System.Drawing.Color.White;
-            this.listApps.FormattingEnabled = true;
-            this.listApps.ItemHeight = 21;
-            this.listApps.Location = new System.Drawing.Point(0, 0);
-            this.listApps.Margin = new System.Windows.Forms.Padding(2);
-            this.listApps.Name = "listApps";
-            this.listApps.Size = new System.Drawing.Size(260, 452);
-            this.listApps.TabIndex = 78;
-            this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
             // 
             // label3
             // 
@@ -389,38 +369,20 @@
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(192, 491);
+            this.btnDelete.Location = new System.Drawing.Point(61, 496);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(83, 31);
+            this.btnDelete.Size = new System.Drawing.Size(84, 26);
             this.btnDelete.TabIndex = 81;
             this.btnDelete.Tag = "themeable";
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnClear.FlatAppearance.BorderSize = 0;
-            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(17, 491);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(83, 31);
-            this.btnClear.TabIndex = 79;
-            this.btnClear.Tag = "themeable";
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // panelAddApp
             // 
-            this.panelAddApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panelAddApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.panelAddApp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAddApp.Controls.Add(this.btnGroups);
             this.panelAddApp.Controls.Add(this.label8);
             this.panelAddApp.Controls.Add(this.groupBox);
@@ -471,20 +433,6 @@
             this.label8.TabIndex = 93;
             this.label8.Tag = "";
             this.label8.Text = "Group (optional)";
-            // 
-            // groupBox
-            // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.groupBox.BorderColor = System.Drawing.Color.Gray;
-            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.FormattingEnabled = true;
-            this.groupBox.Location = new System.Drawing.Point(14, 165);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(206, 25);
-            this.groupBox.TabIndex = 92;
             // 
             // txtParams
             // 
@@ -630,6 +578,125 @@
             this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
             // 
+            // helperMenu
+            // 
+            this.helperMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.helperMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helperMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.helperMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.locateFileToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.sortByAZToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.deleteToolStripMenuItem,
+            this.deleteAllToolStripMenuItem});
+            this.helperMenu.Name = "launcherMenu";
+            this.helperMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.helperMenu.Size = new System.Drawing.Size(153, 136);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteAllToolStripMenuItem
+            // 
+            this.deleteAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAllToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.deleteAllToolStripMenuItem.Name = "deleteAllToolStripMenuItem";
+            this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.deleteAllToolStripMenuItem.Text = "Delete all";
+            this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.deleteAllToolStripMenuItem_Click);
+            // 
+            // sortByAZToolStripMenuItem
+            // 
+            this.sortByAZToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sortByAZToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.sortByAZToolStripMenuItem.Name = "sortByAZToolStripMenuItem";
+            this.sortByAZToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.sortByAZToolStripMenuItem.Text = "Sort by A-Z";
+            this.sortByAZToolStripMenuItem.Click += new System.EventHandler(this.sortByAZToolStripMenuItem_Click);
+            // 
+            // locateFileToolStripMenuItem
+            // 
+            this.locateFileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.locateFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.locateFileToolStripMenuItem.Name = "locateFileToolStripMenuItem";
+            this.locateFileToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.locateFileToolStripMenuItem.Text = "Locate file...";
+            this.locateFileToolStripMenuItem.Click += new System.EventHandler(this.locateFileToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // checkAutoStart
+            // 
+            this.checkAutoStart.AutoSize = true;
+            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
+            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
+            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
+            this.checkAutoStart.Name = "checkAutoStart";
+            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
+            this.checkAutoStart.TabIndex = 85;
+            this.checkAutoStart.Text = "Start with Windows";
+            this.checkAutoStart.UseVisualStyleBackColor = true;
+            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
+            // 
+            // listApps
+            // 
+            this.listApps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.listApps.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listApps.ContextMenuStrip = this.helperMenu;
+            this.listApps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listApps.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.listApps.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listApps.ForeColor = System.Drawing.Color.White;
+            this.listApps.FormattingEnabled = true;
+            this.listApps.ItemHeight = 21;
+            this.listApps.Location = new System.Drawing.Point(0, 0);
+            this.listApps.Margin = new System.Windows.Forms.Padding(2);
+            this.listApps.Name = "listApps";
+            this.listApps.Size = new System.Drawing.Size(260, 452);
+            this.listApps.TabIndex = 78;
+            this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
+            this.listApps.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDown);
+            // 
+            // groupBox
+            // 
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BorderColor = System.Drawing.Color.Gray;
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(14, 165);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(206, 25);
+            this.groupBox.TabIndex = 92;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -662,6 +729,7 @@
             this.panel2.ResumeLayout(false);
             this.panelAddApp.ResumeLayout(false);
             this.panelAddApp.PerformLayout();
+            this.helperMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -677,7 +745,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.NotifyIcon launcherIcon;
         private System.Windows.Forms.ContextMenuStrip launcherMenu;
@@ -706,6 +773,14 @@
         private System.Windows.Forms.Label label8;
         private MoonBox groupBox;
         private System.Windows.Forms.Button btnGroups;
+        private System.Windows.Forms.ContextMenuStrip helperMenu;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem locateFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem sortByAZToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteAllToolStripMenuItem;
     }
 }
 

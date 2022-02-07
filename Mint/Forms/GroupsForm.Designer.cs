@@ -64,7 +64,7 @@
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(244, 388);
+            this.btnSave.Location = new System.Drawing.Point(244, 398);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 31);
@@ -76,7 +76,7 @@
             // 
             // txtGroup
             // 
-            this.txtGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.txtGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGroup.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGroup.ForeColor = System.Drawing.Color.White;
@@ -96,7 +96,7 @@
             this.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.Location = new System.Drawing.Point(165, 388);
+            this.btnAddItem.Location = new System.Drawing.Point(165, 398);
             this.btnAddItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(75, 31);
@@ -125,7 +125,7 @@
             this.btnSort.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSort.ForeColor = System.Drawing.Color.White;
-            this.btnSort.Location = new System.Drawing.Point(11, 388);
+            this.btnSort.Location = new System.Drawing.Point(11, 398);
             this.btnSort.Margin = new System.Windows.Forms.Padding(2);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(98, 31);
@@ -153,7 +153,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(330, 426);
+            this.ClientSize = new System.Drawing.Size(330, 436);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.panel1);

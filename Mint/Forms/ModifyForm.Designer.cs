@@ -77,7 +77,7 @@
             // 
             // txtAppTitle
             // 
-            this.txtAppTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.txtAppTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtAppTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAppTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAppTitle.ForeColor = System.Drawing.Color.White;
@@ -123,7 +123,7 @@
             // 
             // txtParams
             // 
-            this.txtParams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.txtParams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtParams.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtParams.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtParams.ForeColor = System.Drawing.Color.White;
@@ -148,7 +148,7 @@
             // 
             // txtLink
             // 
-            this.txtLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.txtLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.txtLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLink.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLink.ForeColor = System.Drawing.Color.White;
@@ -205,7 +205,7 @@
             // 
             // groupBox
             // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.groupBox.BorderColor = System.Drawing.Color.Gray;
             this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

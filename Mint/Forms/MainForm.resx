@@ -173,6 +173,9 @@
         SZIkSZIkVfHXX/8BMghKNYufOxQAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="helperMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>436, 17</value>
+  </metadata>
   <metadata name="launcherIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>315, 17</value>
   </metadata>

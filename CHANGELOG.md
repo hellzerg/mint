@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7] - 2022-02-07
+- New: Right-click menu in apps list
+- New: Locate file
+- Minor bug fixes
+
 ## [1.6] - 2021-11-27
 - New: Drap n' Drop support for quickly adding apps
 
