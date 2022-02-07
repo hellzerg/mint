@@ -3,13 +3,12 @@ using System.Windows.Forms;
 
 namespace Mint
 {
-    internal class ToolStripRendererMaterial : ToolStripProfessionalRenderer
+    internal class MoonMenuRenderer : ToolStripProfessionalRenderer
     {
-        internal ToolStripRendererMaterial() : base(new ColorsMaterial())
+        internal MoonMenuRenderer() : base(new MoonColors())
         {
 
         }
-
 
         //protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         //{
@@ -36,7 +35,7 @@ namespace Mint
         }
     }
 
-    internal class ColorsMaterial : ProfessionalColorTable
+    internal class MoonColors : ProfessionalColorTable
     {
         public override Color SeparatorLight
         {

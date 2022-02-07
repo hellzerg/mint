@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Mint
 {
-    public class ColoredBox : ComboBox
+    public class MoonBox : ComboBox
     {
         private const int WM_PAINT = 0xF;
         private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;

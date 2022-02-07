@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.botPanel = new System.Windows.Forms.Panel();
             this.panelOptions = new System.Windows.Forms.Panel();
+            this.checkAutoStart = new Mint.MoonCheck();
             this.radioMinimal = new System.Windows.Forms.RadioButton();
             this.radioCaramel = new System.Windows.Forms.RadioButton();
             this.radioLime = new System.Windows.Forms.RadioButton();
@@ -48,13 +49,14 @@
             this.btnSort = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listApps = new System.Windows.Forms.ListBox();
+            this.listApps = new Mint.MoonList();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.panelAddApp = new System.Windows.Forms.Panel();
             this.btnGroups = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.groupBox = new Mint.MoonBox();
             this.txtParams = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
@@ -66,12 +68,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.sortMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableManualSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkAutoStart = new Mint.ColoredCheckBox();
-            this.groupBox = new Mint.ColoredBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.botPanel.SuspendLayout();
@@ -79,7 +75,6 @@
             this.panelApps.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelAddApp.SuspendLayout();
-            this.sortMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanel
@@ -180,17 +175,31 @@
             this.panelOptions.Size = new System.Drawing.Size(296, 200);
             this.panelOptions.TabIndex = 91;
             // 
+            // checkAutoStart
+            // 
+            this.checkAutoStart.AutoSize = true;
+            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
+            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
+            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
+            this.checkAutoStart.Name = "checkAutoStart";
+            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
+            this.checkAutoStart.TabIndex = 85;
+            this.checkAutoStart.Text = "Start with Windows";
+            this.checkAutoStart.UseVisualStyleBackColor = true;
+            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
+            // 
             // radioMinimal
             // 
             this.radioMinimal.AutoSize = true;
             this.radioMinimal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioMinimal.ForeColor = System.Drawing.Color.Gray;
-            this.radioMinimal.Location = new System.Drawing.Point(99, 110);
+            this.radioMinimal.Location = new System.Drawing.Point(136, 110);
             this.radioMinimal.Margin = new System.Windows.Forms.Padding(2);
             this.radioMinimal.Name = "radioMinimal";
-            this.radioMinimal.Size = new System.Drawing.Size(86, 25);
+            this.radioMinimal.Size = new System.Drawing.Size(68, 25);
             this.radioMinimal.TabIndex = 84;
-            this.radioMinimal.Text = "Minimal";
+            this.radioMinimal.Text = "Silver";
             this.radioMinimal.UseVisualStyleBackColor = true;
             this.radioMinimal.CheckedChanged += new System.EventHandler(this.radioMinimal_CheckedChanged);
             // 
@@ -198,13 +207,13 @@
             // 
             this.radioCaramel.AutoSize = true;
             this.radioCaramel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioCaramel.ForeColor = System.Drawing.Color.DarkOrange;
-            this.radioCaramel.Location = new System.Drawing.Point(99, 49);
+            this.radioCaramel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(146)))), ((int)(((byte)(0)))));
+            this.radioCaramel.Location = new System.Drawing.Point(136, 49);
             this.radioCaramel.Margin = new System.Windows.Forms.Padding(2);
             this.radioCaramel.Name = "radioCaramel";
-            this.radioCaramel.Size = new System.Drawing.Size(87, 25);
+            this.radioCaramel.Size = new System.Drawing.Size(78, 25);
             this.radioCaramel.TabIndex = 83;
-            this.radioCaramel.Text = "Caramel";
+            this.radioCaramel.Text = "Amber";
             this.radioCaramel.UseVisualStyleBackColor = true;
             this.radioCaramel.CheckedChanged += new System.EventHandler(this.radioCaramel_CheckedChanged);
             // 
@@ -212,13 +221,13 @@
             // 
             this.radioLime.AutoSize = true;
             this.radioLime.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioLime.ForeColor = System.Drawing.Color.LimeGreen;
-            this.radioLime.Location = new System.Drawing.Point(99, 79);
+            this.radioLime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(175)))), ((int)(((byte)(105)))));
+            this.radioLime.Location = new System.Drawing.Point(136, 79);
             this.radioLime.Margin = new System.Windows.Forms.Padding(2);
             this.radioLime.Name = "radioLime";
-            this.radioLime.Size = new System.Drawing.Size(63, 25);
+            this.radioLime.Size = new System.Drawing.Size(61, 25);
             this.radioLime.TabIndex = 82;
-            this.radioLime.Text = "Lime";
+            this.radioLime.Text = "Jade";
             this.radioLime.UseVisualStyleBackColor = true;
             this.radioLime.CheckedChanged += new System.EventHandler(this.radioLime_CheckedChanged);
             // 
@@ -226,13 +235,13 @@
             // 
             this.radioMagma.AutoSize = true;
             this.radioMagma.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioMagma.ForeColor = System.Drawing.Color.Tomato;
+            this.radioMagma.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(22)))), ((int)(((byte)(39)))));
             this.radioMagma.Location = new System.Drawing.Point(14, 79);
             this.radioMagma.Margin = new System.Windows.Forms.Padding(2);
             this.radioMagma.Name = "radioMagma";
-            this.radioMagma.Size = new System.Drawing.Size(83, 25);
+            this.radioMagma.Size = new System.Drawing.Size(65, 25);
             this.radioMagma.TabIndex = 81;
-            this.radioMagma.Text = "Magma";
+            this.radioMagma.Text = "Ruby";
             this.radioMagma.UseVisualStyleBackColor = true;
             this.radioMagma.CheckedChanged += new System.EventHandler(this.radioMagma_CheckedChanged);
             // 
@@ -241,14 +250,14 @@
             this.radioOcean.AutoSize = true;
             this.radioOcean.Checked = true;
             this.radioOcean.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioOcean.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.radioOcean.Location = new System.Drawing.Point(14, 49);
+            this.radioOcean.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.radioOcean.Location = new System.Drawing.Point(14, 108);
             this.radioOcean.Margin = new System.Windows.Forms.Padding(2);
             this.radioOcean.Name = "radioOcean";
-            this.radioOcean.Size = new System.Drawing.Size(74, 25);
+            this.radioOcean.Size = new System.Drawing.Size(80, 25);
             this.radioOcean.TabIndex = 80;
             this.radioOcean.TabStop = true;
-            this.radioOcean.Text = "Ocean";
+            this.radioOcean.Text = "Azurite";
             this.radioOcean.UseVisualStyleBackColor = true;
             this.radioOcean.CheckedChanged += new System.EventHandler(this.radioOcean_CheckedChanged);
             // 
@@ -256,25 +265,25 @@
             // 
             this.radioZerg.AutoSize = true;
             this.radioZerg.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioZerg.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.radioZerg.Location = new System.Drawing.Point(14, 110);
+            this.radioZerg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.radioZerg.Location = new System.Drawing.Point(14, 49);
             this.radioZerg.Margin = new System.Windows.Forms.Padding(2);
             this.radioZerg.Name = "radioZerg";
-            this.radioZerg.Size = new System.Drawing.Size(62, 25);
+            this.radioZerg.Size = new System.Drawing.Size(98, 25);
             this.radioZerg.TabIndex = 79;
-            this.radioZerg.Text = "Zerg";
+            this.radioZerg.Text = "Amethyst";
             this.radioZerg.UseVisualStyleBackColor = true;
             this.radioZerg.CheckedChanged += new System.EventHandler(this.radioZerg_CheckedChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label6.Location = new System.Drawing.Point(9, 8);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 28);
+            this.label6.Size = new System.Drawing.Size(72, 21);
             this.label6.TabIndex = 78;
             this.label6.Tag = "themeable";
             this.label6.Text = "Options:";
@@ -303,13 +312,13 @@
             this.btnSort.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSort.ForeColor = System.Drawing.Color.White;
-            this.btnSort.Location = new System.Drawing.Point(205, 11);
+            this.btnSort.Location = new System.Drawing.Point(176, 8);
             this.btnSort.Margin = new System.Windows.Forms.Padding(2);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(71, 31);
+            this.btnSort.Size = new System.Drawing.Size(100, 23);
             this.btnSort.TabIndex = 92;
             this.btnSort.Tag = "themeable";
-            this.btnSort.Text = "Sort...";
+            this.btnSort.Text = "Sort by A-Z";
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
@@ -335,10 +344,10 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.listApps);
-            this.panel2.Location = new System.Drawing.Point(16, 46);
+            this.panel2.Location = new System.Drawing.Point(16, 35);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(260, 441);
+            this.panel2.Size = new System.Drawing.Size(260, 452);
             this.panel2.TabIndex = 83;
             // 
             // listApps
@@ -346,29 +355,27 @@
             this.listApps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.listApps.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listApps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listApps.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listApps.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.listApps.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listApps.ForeColor = System.Drawing.Color.White;
             this.listApps.FormattingEnabled = true;
             this.listApps.ItemHeight = 21;
             this.listApps.Location = new System.Drawing.Point(0, 0);
             this.listApps.Margin = new System.Windows.Forms.Padding(2);
             this.listApps.Name = "listApps";
-            this.listApps.Size = new System.Drawing.Size(260, 441);
+            this.listApps.Size = new System.Drawing.Size(260, 452);
             this.listApps.TabIndex = 78;
-            this.listApps.DragDrop += new System.Windows.Forms.DragEventHandler(this.listApps_DragDrop);
-            this.listApps.DragOver += new System.Windows.Forms.DragEventHandler(this.listApps_DragOver);
             this.listApps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDoubleClick);
-            this.listApps.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listApps_MouseDown);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label3.Location = new System.Drawing.Point(11, 7);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 28);
+            this.label3.Size = new System.Drawing.Size(52, 21);
             this.label3.TabIndex = 77;
             this.label3.Tag = "themeable";
             this.label3.Text = "Apps:";
@@ -465,6 +472,20 @@
             this.label8.Tag = "";
             this.label8.Text = "Group (optional)";
             // 
+            // groupBox
+            // 
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.groupBox.BorderColor = System.Drawing.Color.Gray;
+            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.FormattingEnabled = true;
+            this.groupBox.Location = new System.Drawing.Point(14, 165);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(206, 25);
+            this.groupBox.TabIndex = 92;
+            // 
             // txtParams
             // 
             this.txtParams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -543,12 +564,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(9, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 28);
+            this.label1.Size = new System.Drawing.Size(123, 21);
             this.label1.TabIndex = 84;
             this.label1.Tag = "themeable";
             this.label1.Text = "Add a new app:";
@@ -609,73 +630,6 @@
             this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
             // 
-            // sortMenu
-            // 
-            this.sortMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.sortMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.sortMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.enableManualSortToolStripMenuItem});
-            this.sortMenu.Name = "launcherMenu";
-            this.sortMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.sortMenu.ShowImageMargin = false;
-            this.sortMenu.Size = new System.Drawing.Size(173, 76);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
-            this.toolStripMenuItem1.Text = "Sort by A-Z";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 24);
-            this.toolStripMenuItem2.Text = "Sort by Z-A";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // enableManualSortToolStripMenuItem
-            // 
-            this.enableManualSortToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.enableManualSortToolStripMenuItem.Name = "enableManualSortToolStripMenuItem";
-            this.enableManualSortToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
-            this.enableManualSortToolStripMenuItem.Text = "Enable manual sort";
-            this.enableManualSortToolStripMenuItem.Click += new System.EventHandler(this.enableManualSortToolStripMenuItem_Click);
-            // 
-            // checkAutoStart
-            // 
-            this.checkAutoStart.AutoSize = true;
-            this.checkAutoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAutoStart.ForeColor = System.Drawing.Color.Silver;
-            this.checkAutoStart.Location = new System.Drawing.Point(14, 147);
-            this.checkAutoStart.Margin = new System.Windows.Forms.Padding(2);
-            this.checkAutoStart.Name = "checkAutoStart";
-            this.checkAutoStart.Size = new System.Drawing.Size(170, 25);
-            this.checkAutoStart.TabIndex = 85;
-            this.checkAutoStart.Text = "Start with Windows";
-            this.checkAutoStart.UseVisualStyleBackColor = true;
-            this.checkAutoStart.CheckedChanged += new System.EventHandler(this.checkAutoStart_CheckedChanged);
-            // 
-            // groupBox
-            // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.groupBox.BorderColor = System.Drawing.Color.Gray;
-            this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.FormattingEnabled = true;
-            this.groupBox.Location = new System.Drawing.Point(14, 165);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(206, 25);
-            this.groupBox.TabIndex = 92;
-            this.groupBox.SelectedIndexChanged += new System.EventHandler(this.groupBox_SelectedIndexChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -697,7 +651,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -709,7 +662,6 @@
             this.panel2.ResumeLayout(false);
             this.panelAddApp.ResumeLayout(false);
             this.panelAddApp.PerformLayout();
-            this.sortMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -721,7 +673,7 @@
         private System.Windows.Forms.Label lblversion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel botPanel;
-        private System.Windows.Forms.ListBox listApps;
+        private MoonList listApps;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
@@ -745,19 +697,15 @@
         private System.Windows.Forms.RadioButton radioMagma;
         private System.Windows.Forms.RadioButton radioOcean;
         private System.Windows.Forms.RadioButton radioZerg;
-        private ColoredCheckBox checkAutoStart;
+        private MoonCheck checkAutoStart;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtParams;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.Label label8;
-        private ColoredBox groupBox;
+        private MoonBox groupBox;
         private System.Windows.Forms.Button btnGroups;
-        private System.Windows.Forms.ContextMenuStrip sortMenu;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem enableManualSortToolStripMenuItem;
     }
 }
 

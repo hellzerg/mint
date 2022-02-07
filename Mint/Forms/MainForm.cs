@@ -28,7 +28,6 @@ namespace Mint
         readonly string _deleteAllAppsMessage = "Are you sure you want to delete all apps?";
 
         bool _allowExit = false;
-        bool _allowManualSort = false;
 
         ToolStripMenuItem _ExitItem;
 
@@ -40,8 +39,7 @@ namespace Mint
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             Options.ApplyTheme(this);
-            launcherMenu.Renderer = new ToolStripRendererMaterial();
-            sortMenu.Renderer = new ToolStripRendererMaterial();
+            launcherMenu.Renderer = new MoonMenuRenderer();
 
             LoadAppsStructure();
             LoadAppsList();
@@ -50,9 +48,6 @@ namespace Mint
 
             LoadOptions();
             lblversion.Text += Program.GetCurrentVersionToString();
-
-            this.AllowDrop = true;
-            listApps.AllowDrop = _allowManualSort;
         }
 
         private void BuildExitItem()
@@ -96,6 +91,12 @@ namespace Mint
         {
             File.WriteAllText(Options.AppsStructureFile, string.Empty);
 
+            foreach (App s in _AppsStructure.Apps)
+            {
+                Console.WriteLine(s.AppTitle);
+            }
+            Console.WriteLine("--------------------------");
+
             using (FileStream fs = System.IO.File.Open(Options.AppsStructureFile, FileMode.OpenOrCreate))
             using (StreamWriter sw = new StreamWriter(fs))
             using (JsonWriter jw = new JsonTextWriter(sw))
@@ -132,22 +133,22 @@ namespace Mint
         {
             switch (Options.CurrentOptions.Theme)
             {
-                case Theme.Caramel:
+                case Theme.Amber:
                     radioCaramel.Checked = true;
                     break;
-                case Theme.Lime:
+                case Theme.Jade:
                     radioLime.Checked = true;
                     break;
-                case Theme.Magma:
+                case Theme.Ruby:
                     radioMagma.Checked = true;
                     break;
-                case Theme.Minimal:
+                case Theme.Silver:
                     radioMinimal.Checked = true;
                     break;
-                case Theme.Ocean:
+                case Theme.Azurite:
                     radioOcean.Checked = true;
                     break;
-                case Theme.Zerg:
+                case Theme.Amethyst:
                     radioZerg.Checked = true;
                     break;
             }
@@ -182,7 +183,8 @@ namespace Mint
 
                 bool isDeadItem = false;
 
-                foreach (App x in _AppsStructure.Apps.OrderBy(o => o.AppGroup))
+                // .OrderBy(o => o.AppGroup)
+                foreach (App x in _AppsStructure.Apps)
                 {
                     isDeadItem = !File.Exists(x.AppLink);
 
@@ -429,37 +431,37 @@ namespace Mint
 
         private void radioOcean_CheckedChanged(object sender, EventArgs e)
         {
-            Options.CurrentOptions.Theme = Theme.Ocean;
+            Options.CurrentOptions.Theme = Theme.Azurite;
             Options.ApplyTheme(this);
         }
 
         private void radioMagma_CheckedChanged(object sender, EventArgs e)
         {
-            Options.CurrentOptions.Theme = Theme.Magma;
+            Options.CurrentOptions.Theme = Theme.Ruby;
             Options.ApplyTheme(this);
         }
 
         private void radioZerg_CheckedChanged(object sender, EventArgs e)
         {
-            Options.CurrentOptions.Theme = Theme.Zerg;
+            Options.CurrentOptions.Theme = Theme.Amethyst;
             Options.ApplyTheme(this);
         }
 
         private void radioCaramel_CheckedChanged(object sender, EventArgs e)
         {
-            Options.CurrentOptions.Theme = Theme.Caramel;
+            Options.CurrentOptions.Theme = Theme.Amber;
             Options.ApplyTheme(this);
         }
 
         private void radioLime_CheckedChanged(object sender, EventArgs e)
         {
-            Options.CurrentOptions.Theme = Theme.Lime;
+            Options.CurrentOptions.Theme = Theme.Jade;
             Options.ApplyTheme(this);
         }
 
         private void radioMinimal_CheckedChanged(object sender, EventArgs e)
         {
-            Options.CurrentOptions.Theme = Theme.Minimal;
+            Options.CurrentOptions.Theme = Theme.Silver;
             Options.ApplyTheme(this);
         }
 
@@ -576,6 +578,7 @@ namespace Mint
         {
             if (listApps.SelectedIndex > -1)
             {
+                int i = listApps.SelectedIndex;
                 ModifyForm f = new ModifyForm(listApps.SelectedIndex, this);
                 f.ShowDialog(this);
 
@@ -583,27 +586,16 @@ namespace Mint
                 LoadAppsStructure();
                 LoadAppsList();
                 BuildLauncherMenu();
+
+                listApps.SelectedIndex = i;
             }
         }
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            sortMenu.Show(Cursor.Position.X, Cursor.Position.Y);
-        }
-
-        private void SortByAZ(bool inversed)
-        {
             _AppsStructure.Apps = _AppsStructure.Apps.OrderBy(x => x.AppTitle).ToList();
-            if (inversed) _AppsStructure.Apps.Reverse();
+            //if (inversed) _AppsStructure.Apps.Reverse();
 
-            SaveAppsStructure();
-            LoadAppsStructure();
-            LoadAppsList();
-            BuildLauncherMenu();
-        }
-
-        private void SaveManualSort()
-        {
             SaveAppsStructure();
             LoadAppsStructure();
             LoadAppsList();
@@ -641,79 +633,6 @@ namespace Mint
                 LoadFile(files[0]);
             }
             catch { }
-        }
-
-        private void MainForm_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Link;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
-        }
-
-        private void groupBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listApps_DragDrop(object sender, DragEventArgs e)
-        {
-            Point point = listApps.PointToClient(new Point(e.X, e.Y));
-            int index = listApps.IndexFromPoint(point);
-            if (index < 0) index = listApps.Items.Count - 1;
-            object data = listApps.SelectedItem;
-
-            App a = _AppsStructure.Apps.Find(x => x.AppTitle == data.ToString());
-            if (a != null)
-            {
-                _AppsStructure.Apps.Remove(a);
-                _AppsStructure.Apps.Insert(index, a);
-            }
-
-            //listApps.Items.Remove(data);
-            //listApps.Items.Insert(index, data);
-
-            SaveManualSort();
-        }
-
-        private void listApps_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void listApps_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (listApps.SelectedItem == null) return;
-            listApps.DoDragDrop(listApps.SelectedItem, DragDropEffects.Move);
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            SortByAZ(false);
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            SortByAZ(true);
-        }
-
-        private void enableManualSortToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _allowManualSort = !_allowManualSort;
-            listApps.AllowDrop = _allowManualSort;
-            
-            if (_allowManualSort)
-            {
-                enableManualSortToolStripMenuItem.Text = "Disable manual sort";
-            }
-            else
-            {
-                enableManualSortToolStripMenuItem.Text = "Enable manual sort";
-            }
         }
     }
 }

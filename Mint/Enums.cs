@@ -2,11 +2,11 @@
 {
     public enum Theme
     {
-        Zerg,
-        Ocean,
-        Caramel,
-        Magma,
-        Lime,
-        Minimal
+        Amethyst,
+        Azurite,
+        Amber,
+        Ruby,
+        Jade,
+        Silver
     }
 }

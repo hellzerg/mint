@@ -39,7 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLocate = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox = new Mint.ColoredBox();
+            this.groupBox = new Mint.MoonBox();
             this.SuspendLayout();
             // 
             // label1
@@ -266,6 +266,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLocate;
         private System.Windows.Forms.Label label8;
-        private ColoredBox groupBox;
+        private MoonBox groupBox;
     }
 }

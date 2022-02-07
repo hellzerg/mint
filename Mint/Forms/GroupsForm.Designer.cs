@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox = new System.Windows.Forms.ListBox();
+            this.groupBox = new Mint.MoonList();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtGroup = new System.Windows.Forms.TextBox();
             this.btnAddItem = new System.Windows.Forms.Button();
@@ -40,10 +40,11 @@
             // 
             // groupBox
             // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.groupBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.groupBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox.ForeColor = System.Drawing.Color.White;
             this.groupBox.FormattingEnabled = true;
             this.groupBox.ItemHeight = 17;
@@ -127,10 +128,10 @@
             this.btnSort.Location = new System.Drawing.Point(11, 388);
             this.btnSort.Margin = new System.Windows.Forms.Padding(2);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(75, 31);
+            this.btnSort.Size = new System.Drawing.Size(98, 31);
             this.btnSort.TabIndex = 102;
             this.btnSort.Tag = "themeable";
-            this.btnSort.Text = "Sort";
+            this.btnSort.Text = "Sort by A-Z";
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
@@ -177,7 +178,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox groupBox;
+        private MoonList groupBox;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtGroup;
         private System.Windows.Forms.Button btnAddItem;
