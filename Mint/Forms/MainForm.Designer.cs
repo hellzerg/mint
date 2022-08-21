@@ -48,6 +48,14 @@
             this.btnSort = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.helperMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locateFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sortByAZToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.panelAddApp = new System.Windows.Forms.Panel();
@@ -64,14 +72,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.helperMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sortByAZToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.locateFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkAutoStart = new Mint.MoonCheck();
             this.listApps = new Mint.MoonList();
             this.groupBox = new Mint.MoonBox();
@@ -81,12 +81,13 @@
             this.panelOptions.SuspendLayout();
             this.panelApps.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panelAddApp.SuspendLayout();
             this.helperMenu.SuspendLayout();
+            this.panelAddApp.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanel
             // 
+            this.topPanel.AllowDrop = true;
             this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.topPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.topPanel.Controls.Add(this.btnUpdate);
@@ -157,6 +158,7 @@
             // 
             // botPanel
             // 
+            this.botPanel.AllowDrop = true;
             this.botPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.botPanel.Controls.Add(this.panelOptions);
             this.botPanel.Controls.Add(this.panelApps);
@@ -347,6 +349,78 @@
             this.panel2.Size = new System.Drawing.Size(260, 452);
             this.panel2.TabIndex = 83;
             // 
+            // helperMenu
+            // 
+            this.helperMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.helperMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helperMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.helperMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.locateFileToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.sortByAZToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.deleteToolStripMenuItem,
+            this.deleteAllToolStripMenuItem});
+            this.helperMenu.Name = "launcherMenu";
+            this.helperMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.helperMenu.Size = new System.Drawing.Size(153, 136);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // locateFileToolStripMenuItem
+            // 
+            this.locateFileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.locateFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.locateFileToolStripMenuItem.Name = "locateFileToolStripMenuItem";
+            this.locateFileToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.locateFileToolStripMenuItem.Text = "Locate file...";
+            this.locateFileToolStripMenuItem.Click += new System.EventHandler(this.locateFileToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // sortByAZToolStripMenuItem
+            // 
+            this.sortByAZToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sortByAZToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.sortByAZToolStripMenuItem.Name = "sortByAZToolStripMenuItem";
+            this.sortByAZToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.sortByAZToolStripMenuItem.Text = "Sort by A-Z";
+            this.sortByAZToolStripMenuItem.Click += new System.EventHandler(this.sortByAZToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // deleteAllToolStripMenuItem
+            // 
+            this.deleteAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAllToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.deleteAllToolStripMenuItem.Name = "deleteAllToolStripMenuItem";
+            this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.deleteAllToolStripMenuItem.Text = "Delete all";
+            this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.deleteAllToolStripMenuItem_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -381,6 +455,7 @@
             // 
             // panelAddApp
             // 
+            this.panelAddApp.AllowDrop = true;
             this.panelAddApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelAddApp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAddApp.Controls.Add(this.btnGroups);
@@ -578,78 +653,6 @@
             this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
             // 
-            // helperMenu
-            // 
-            this.helperMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.helperMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helperMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.helperMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.locateFileToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.sortByAZToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.deleteToolStripMenuItem,
-            this.deleteAllToolStripMenuItem});
-            this.helperMenu.Name = "launcherMenu";
-            this.helperMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.helperMenu.Size = new System.Drawing.Size(153, 136);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteAllToolStripMenuItem
-            // 
-            this.deleteAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteAllToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.deleteAllToolStripMenuItem.Name = "deleteAllToolStripMenuItem";
-            this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.deleteAllToolStripMenuItem.Text = "Delete all";
-            this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.deleteAllToolStripMenuItem_Click);
-            // 
-            // sortByAZToolStripMenuItem
-            // 
-            this.sortByAZToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortByAZToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.sortByAZToolStripMenuItem.Name = "sortByAZToolStripMenuItem";
-            this.sortByAZToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.sortByAZToolStripMenuItem.Text = "Sort by A-Z";
-            this.sortByAZToolStripMenuItem.Click += new System.EventHandler(this.sortByAZToolStripMenuItem_Click);
-            // 
-            // locateFileToolStripMenuItem
-            // 
-            this.locateFileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.locateFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.locateFileToolStripMenuItem.Name = "locateFileToolStripMenuItem";
-            this.locateFileToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.locateFileToolStripMenuItem.Text = "Locate file...";
-            this.locateFileToolStripMenuItem.Click += new System.EventHandler(this.locateFileToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
             // checkAutoStart
             // 
             this.checkAutoStart.AutoSize = true;
@@ -699,6 +702,7 @@
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -727,9 +731,9 @@
             this.panelApps.ResumeLayout(false);
             this.panelApps.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.helperMenu.ResumeLayout(false);
             this.panelAddApp.ResumeLayout(false);
             this.panelAddApp.PerformLayout();
-            this.helperMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
