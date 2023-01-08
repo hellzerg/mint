@@ -1,6 +1,6 @@
-# Mint Changelog
-
-All notable changes to this project will be documented in this file.
+## [1.8] - 2023-01-08
+- New: Mint properly supports DPI scaling now
+- Security: Newtonsoft.JSON updated to latest version
 
 ## [1.7] - 2022-02-07
 - New: Right-click menu in apps list

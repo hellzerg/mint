@@ -11,7 +11,7 @@ namespace Mint
 
         // Enter current version here
         internal readonly static float Major = 1;
-        internal readonly static float Minor = 7;
+        internal readonly static float Minor = 8;
 
         /* END OF VERSION PROPERTIES */
 
@@ -31,9 +31,14 @@ namespace Mint
         internal static Mutex MUTEX;
         static bool _notRunning;
 
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
         [STAThread]
         static void Main()
         {
+            if (Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
