@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace Mint
     {
         public Theme Theme { get; set; }
         public bool AutoStart { get; set; }
+
+        public List<string> AutoWatchPaths
+        {
+            get; set;
+        }
     }
 
     internal class Options
@@ -53,6 +59,17 @@ namespace Mint
             }
         }
 
+
+        internal static void AddPathToWatcher(string path)
+        {
+            if (!Directory.Exists(path))
+            {   MessageBox.Show("You cant add  non exists directory ");
+                return;
+            }
+
+            CurrentOptions.AutoWatchPaths.Add(path);
+            
+        }
         private static void SetTheme(Form f, Color c1, Color c2)
         {
             dynamic c;

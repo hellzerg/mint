@@ -72,6 +72,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.launcherIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.launcherMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnAddFolder = new System.Windows.Forms.Button();
             this.checkAutoStart = new Mint.MoonCheck();
             this.listApps = new Mint.MoonList();
             this.groupBox = new Mint.MoonBox();
@@ -458,6 +459,7 @@
             this.panelAddApp.AllowDrop = true;
             this.panelAddApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.panelAddApp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAddApp.Controls.Add(this.btnAddFolder);
             this.panelAddApp.Controls.Add(this.btnGroups);
             this.panelAddApp.Controls.Add(this.label8);
             this.panelAddApp.Controls.Add(this.groupBox);
@@ -562,13 +564,13 @@
             this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(95, 264);
+            this.btnAdd.Location = new System.Drawing.Point(174, 268);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(104, 31);
             this.btnAdd.TabIndex = 80;
             this.btnAdd.Tag = "themeable";
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Add App";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -652,6 +654,25 @@
             this.launcherMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.launcherMenu.Size = new System.Drawing.Size(61, 4);
             this.launcherMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.launcherMenu_ItemClicked);
+            // 
+            // btnAddFolder
+            // 
+            this.btnAddFolder.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddFolder.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddFolder.FlatAppearance.BorderSize = 0;
+            this.btnAddFolder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAddFolder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAddFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddFolder.ForeColor = System.Drawing.Color.White;
+            this.btnAddFolder.Location = new System.Drawing.Point(14, 268);
+            this.btnAddFolder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddFolder.Name = "btnAddFolder";
+            this.btnAddFolder.Size = new System.Drawing.Size(104, 31);
+            this.btnAddFolder.TabIndex = 95;
+            this.btnAddFolder.Tag = "themeable";
+            this.btnAddFolder.Text = "Add Folder";
+            this.btnAddFolder.UseVisualStyleBackColor = false;
+            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
             // 
             // checkAutoStart
             // 
@@ -785,6 +806,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteAllToolStripMenuItem;
+        private System.Windows.Forms.Button btnAddFolder;
     }
 }
 

@@ -8,9 +8,9 @@ namespace Mint
     public partial class ModifyForm : Form
     {
         int _appIndex;
-        MainForm _main;
+       // MainForm _main;
 
-        public ModifyForm(int appIndex, MainForm main)
+        public ModifyForm(int appIndex)//, //MainForm main)
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
@@ -18,18 +18,18 @@ namespace Mint
             Options.ApplyTheme(this);
 
             _appIndex = appIndex;
-            _main = main;
+            //_main = main;
 
             if (_appIndex > -1)
             {
-                txtAppTitle.Text = _main._AppsStructure.Apps[_appIndex].AppTitle;
-                txtParams.Text = _main._AppsStructure.Apps[_appIndex].AppParams;
-                txtLink.Text = _main._AppsStructure.Apps[_appIndex].AppLink;
+                txtAppTitle.Text = Program._AppsStructure.Apps[_appIndex].AppTitle;
+                txtParams.Text = Program._AppsStructure.Apps[_appIndex].AppParams;
+                txtLink.Text = Program._AppsStructure.Apps[_appIndex].AppLink;
 
-                if (_main._AppsStructure.Groups != null)
+                if (Program._AppsStructure.Groups != null)
                 {
-                    groupBox.Items.AddRange(_main._AppsStructure.Groups.ToArray());
-                    groupBox.Text = _main._AppsStructure.Apps[_appIndex].AppGroup;
+                    groupBox.Items.AddRange(Program._AppsStructure.Groups.ToArray());
+                    groupBox.Text = Program._AppsStructure.Apps[_appIndex].AppGroup;
                 }
             }
         }
@@ -54,10 +54,10 @@ namespace Mint
                 //    if (i == _appIndex) continue;
                 //}
 
-                _main._AppsStructure.Apps[_appIndex].AppTitle = txtAppTitle.Text;
-                _main._AppsStructure.Apps[_appIndex].AppParams = txtParams.Text;
-                _main._AppsStructure.Apps[_appIndex].AppLink = txtLink.Text;
-                _main._AppsStructure.Apps[_appIndex].AppGroup = groupBox.Text;
+                Program._AppsStructure.Apps[_appIndex].AppTitle = txtAppTitle.Text;
+                Program._AppsStructure.Apps[_appIndex].AppParams = txtParams.Text;
+                Program._AppsStructure.Apps[_appIndex].AppLink = txtLink.Text;
+                Program._AppsStructure.Apps[_appIndex].AppGroup = groupBox.Text;
 
                 this.Close();
             }
