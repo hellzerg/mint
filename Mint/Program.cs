@@ -4,8 +4,11 @@ using System.Windows.Forms;
 
 namespace Mint
 {
+   
     static class Program
     {
+
+        public static AppsStructure _AppsStructure;
         /* VERSION PROPERTIES */
         /* DO NOT LEAVE THEM EMPTY */
 

@@ -7,12 +7,18 @@ namespace Mint
     {
         private const int WM_PAINT = 0xF;
         private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;
-        Color borderColor = Color.Blue;
+        private Color borderColor = Color.Blue;
 
         public Color BorderColor
         {
-            get { return borderColor; }
-            set { borderColor = value; Invalidate(); }
+            get
+            {
+                return borderColor;
+            }
+            set
+            {
+                borderColor = value; Invalidate();
+            }
         }
 
         protected override void WndProc(ref Message m)
